@@ -1,0 +1,52 @@
+[
+  {
+    "id": "2PMmQIvROwXn",
+    "status": "pending",
+    "customerEmail": "swetabhatt2133@gmail.com",
+    "items": [
+      {
+        "productId": "gift-box",
+        "productName": "Personalized Gift Box",
+        "unitPrice": 5200,
+        "quantity": 1,
+        "lineTotal": 5200,
+        "personalization": {
+          "recipientName": "test",
+          "recipientRelation": "test",
+          "Greeting card message": "test",
+          "boxColor": "Blue/Sliver",
+          "chocolateType": "Lindt - Dark chocolate "
+        }
+      }
+    ],
+    "subtotal": 5200,
+    "currency": "usd",
+    "createdAt": "2026-08-04T18:59:04.910Z",
+    "stripeSessionId": "cs_test_a1EtERLDLy3Dxi6mieZLgNU44u80bEW0JfpftaqhSzxrXZPcKe5ey3QrEO"
+  },
+  {
+    "id": "Be0zNrBaD99D",
+    "status": "pending",
+    "customerEmail": "swetabhatt2133@gmail.com",
+    "items": [
+      {
+        "productId": "gift-box",
+        "productName": "Personalized Gift Box",
+        "unitPrice": 5200,
+        "quantity": 1,
+        "lineTotal": 5200,
+        "personalization": {
+          "recipientName": "test",
+          "recipientRelation": "test",
+          "Greeting card message": "test",
+          "boxColor": "Blue/Sliver",
+          "chocolateType": "Lindt - Dark chocolate "
+        }
+      }
+    ],
+    "subtotal": 5200,
+    "currency": "usd",
+    "createdAt": "2026-08-04T18:59:13.369Z",
+    "stripeSessionId": "cs_test_a1zVWBKrCVs0N3smKqcngrtEcj0e9GY1U6GJYRRc3xaGCZvl8J75Jbodvj"
+  }
+]
