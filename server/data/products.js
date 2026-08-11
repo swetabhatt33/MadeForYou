@@ -200,7 +200,7 @@ variantFieldLabel: "Invitation Type",
   { id: "basket", label: "Basket — pack of 5", price: 1500 },
   { id: "box", label: "Invitation Box — pack of 5", price: 1500 },
 ],
-variantFieldLabel: "Invitation Type",,
+variantFieldLabel: "Invitation Type",
     personalizationFields: [
       {
         name: "eventType",
