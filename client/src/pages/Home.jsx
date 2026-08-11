@@ -40,7 +40,7 @@ export default function Home() {
               person you're giving them to.
             </p>
             <div className="hero-actions">
-            <Link to=".catalogue" className="btn btn-primary">
+            <Link to="catalogue-item" className="btn btn-primary">
               Browse the collection
             </Link>
           </div>
