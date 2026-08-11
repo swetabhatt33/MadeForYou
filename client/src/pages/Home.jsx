@@ -54,7 +54,8 @@ export default function Home() {
       </section>
 
       <section className="section container">
-        <h1>Our collection</h1>
+        <h1>Our collection </h1>
+        
         <div className="catalogue">
           {products.map((product, i) => (
             <Link
