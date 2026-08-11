@@ -28,6 +28,9 @@ body,
 #root {
   min-height: 100%;
 }
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   margin: 0;
@@ -85,6 +88,9 @@ textarea:focus-visible {
 }
 
 @media (prefers-reduced-motion: reduce) {
+   html {
+    scroll-behavior: auto;
+  }
   * {
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
