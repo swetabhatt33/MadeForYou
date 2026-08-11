@@ -13,7 +13,6 @@ export default function Header() {
           </span>
         </Link>
         <nav className="nav-links">
-          <Link to="/MadeForYou">Home</Link>
           <Link to="/product/gift-box">Gift Boxes</Link>
           <Link to="/product/greeting-card">Greeting Cards</Link>
           <Link to="/product/invitations">Invitations</Link>
