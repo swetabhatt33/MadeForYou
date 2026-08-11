@@ -98,7 +98,7 @@ export default function ProductDetail() {
         )}
 
         <div className="field-group">
-          <span className="label">Size / option</span>
+          <span className="label">{product.variantFieldLabel || "Size / option"}</span>
           <div className="variant-options">
             {product.variants.map((v) => (
               <button
