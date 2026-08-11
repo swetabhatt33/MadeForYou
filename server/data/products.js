@@ -5,7 +5,7 @@
 export const PRODUCTS = [
     {
     id: "gift-box",
-    name: "Personalized Gift Box",
+    name: "Personalized Gift Boxes",
     tagline: "Because Every Story Deserves a Special Gift.",
     description:
       "We transform your emotions into beautifully curated gift experiences. Each personalized box is thoughtfully designed to capture memories, celebrate milestones, and make every occasion unforgettable. Each box comes with:",
@@ -75,7 +75,7 @@ export const PRODUCTS = [
   },
   {
     id: "greeting-card",
-    name: "Personalized Greeting Card",
+    name: "Personalized Greeting Cards",
     tagline: "Your words transform into beautiful poetry—whether it be a story or express the deepest emotions.",
     description:
       "A personalized greeting card that brings your story to life through heartfelt pictures and beautifully crafted poetry—capturing memories and emotions you’ll cherish forever.** Your story, your memories, your vision—transformed into a custom-designed picture on a greeting card made just for you.**",
@@ -212,7 +212,7 @@ export const PRODUCTS = [
         name: "packaging",
         label: "Packaging style",
         type: "select",
-        options: ["Kraft Pouch", "Satin Pouch", "Small Box"],
+        options: ["Kraft Pouch", "Basket", "Small Box"],
         required: true,
       },
       {
