@@ -32,7 +32,7 @@ export default function Home() {
           <div>
             <span className="eyebrow">Personalized · Made to order</span>
             <h1>
-              Gifts set delivered to <em>your</em> doorstep!
+              Gifts delivered to <em>your</em> doorstep!
             </h1>
             <p className="lede">
               Personalized giftboxes, custom greeting cards, 
