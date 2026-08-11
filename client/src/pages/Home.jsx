@@ -39,6 +39,11 @@ export default function Home() {
               invitations — printed, and packed by hand for the
               person you're giving them to.
             </p>
+            <div className="hero-cta">
+            <Link to="#gift-box" className="btn btn-primary btn-small">
+              Browse the collection
+            </Link>
+          </div>
           </div>
            <img
       src="/images/hero-photo.jpg"
