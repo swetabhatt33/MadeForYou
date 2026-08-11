@@ -211,17 +211,13 @@ textarea:focus-visible {
   gap: 48px;
   align-items: center;
 }
-.hero-ghost-letter {
-  position: absolute;
-  top: -60px;
-  right: -20px;
-  font-family: var(--font-display);
-  font-size: 42rem;
-  line-height: 1;
-  color: var(--ink);
-  opacity: 0.05;
-  pointer-events: none;
-  user-select: none;
+.hero-photo { 
+width: 100%; 
+height: auto; 
+max-height: 480px; 
+object-fit: cover; 
+border-radius: 4px; 
+border: 1px solid var(--line); 
 }
 .hero h1 {
   font-size: 3.4rem;
