@@ -49,28 +49,6 @@ export default function Home() {
               </a>
             </div>
           </div>
-
-          <div className="seal-stage">
-            <div key={sealKey}>
-              <WaxSeal initials={initials || "V&S"} />
-            </div>
-            <div className="seal-input">
-              <label htmlFor="try-initials">Make your gift own greeting card</label>
-              <input
-                id="try-initials"
-                type="text"
-                value={initials}
-                onChange={handleInitials}
-                placeholder="J.M."
-                maxLength={3}
-              />
-            </div>
-            <p className="seal-caption">
-              Every order is finished with a brass-stamped wax seal like this
-              one — set with the initials you choose at checkout.
-            </p>
-          </div>
-        </div>
       </section>
 
       <section className="section container">
