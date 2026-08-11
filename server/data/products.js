@@ -32,9 +32,7 @@ export const PRODUCTS = [
       "Rose Pink/Gold": "/images/gift-box-3.jpg",
   },
 },
-    variants: [
-      { price: 5200 },
-    ],
+    variants: [{ id: "standard", label: "Gift Box", price: 5200 }],
     personalizationFields: [
       {
         name: "recipientName",
@@ -84,9 +82,7 @@ export const PRODUCTS = [
       "/images/greeting-card-1.jpg",
       "/images/greeting-card-2.jpg",
     ],
-    variants: [
-      { price: 1500 },
-    ],
+    variants: [{ id: "standard", label: "Greeting Card", price: 1500 }],
     personalizationFields: [
       {
         name: "recipientName",
@@ -134,13 +130,6 @@ variantFieldLabel: "Invitation Type",
         label: "Occasion",
         type: "select",
         options: ["Wedding", "Birthday", "Anniversary", "Baby Shower", "Other"],
-        required: true,
-      },
-	{
-        name: "invitationType",
-        label: "Invitation Type",
-        type: "select",
-        options: ["LetterPress Invitation", "Invitation Baskets", "Invitation Boxes"],
         required: true,
       },
       {
@@ -195,12 +184,12 @@ variantFieldLabel: "Invitation Type",
       "/images/return-gifts-1.jpg",
       "/images/return-gifts-2.jpg",
     ],
-    variants: [
-  { id: "kraft-pouch", label: "Kraft Pouch — pack of 5", price: 1500 },
+variants: [
+  { id: "kraft-pouch", label: "Kraft Pouch — pack of 7", price: 1500 },
   { id: "basket", label: "Basket — pack of 5", price: 1500 },
-  { id: "box", label: "Invitation Box — pack of 5", price: 1500 },
+  { id: "box", label: "Box — pack of 5", price: 1500 },
 ],
-variantFieldLabel: "Invitation Type",
+variantFieldLabel: "Packaging Type",
     personalizationFields: [
       {
         name: "eventType",
