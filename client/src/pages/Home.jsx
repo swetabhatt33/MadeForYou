@@ -40,9 +40,9 @@ export default function Home() {
               person you're giving them to.
             </p>
             <div className="hero-actions">
-            <Link to="catalogue-item" className="btn btn-primary">
+            <a href="#gift-box" className="btn btn-primary btn-small">
               Browse the collection
-            </Link>
+            </a>
           </div>
           </div>
            <img
