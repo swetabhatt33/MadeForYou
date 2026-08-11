@@ -39,8 +39,8 @@ export default function Home() {
               invitations and return gifts, packed by hand for the
               person you're giving them to.
             </p>
-            <div className="hero-cta">
-            <Link to="#gift-box" className="btn btn-primary btn-small">
+            <div className="hero-actions">
+            <Link to="#gift-box" className="btn btn-primary">
               Browse the collection
             </Link>
           </div>
