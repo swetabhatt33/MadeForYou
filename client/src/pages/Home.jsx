@@ -54,11 +54,7 @@ export default function Home() {
       </section>
 
       <section className="section container">
-  
-
-        {loading && <p>Loading the collection…</p>}
-        {error && <p className="error-text">{error}</p>}
-
+        <h1>Our collection</h1>}
         <div className="catalogue">
           {products.map((product, i) => (
             <Link
