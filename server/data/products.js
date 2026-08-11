@@ -123,8 +123,11 @@ export const PRODUCTS = [
       "/images/invitations-2.jpg",
     ],
     variants: [
-      { id: "each", price: 1000 }, 
+  { id: "letterpress", label: "LetterPress Invitation — pack of 10 cards", price: 1200 },
+  { id: "basket", label: "Invitation Basket — 1 unit", price: 1500 },
+  { id: "box", label: "Invitation Box — 1 unit", price: 1500 },
 ],
+variantFieldLabel: "Invitation Type",
     personalizationFields: [
       {
         name: "eventType",
@@ -192,7 +195,12 @@ export const PRODUCTS = [
       "/images/return-gifts-1.jpg",
       "/images/return-gifts-2.jpg",
     ],
-    variants: [{ id: "standard", label: "Return Gift", price: 1200 }],
+    variants: [
+  { id: "kraft-pouch", label: "Kraft Pouch — pack of 5", price: 1500 },
+  { id: "basket", label: "Basket — pack of 5", price: 1500 },
+  { id: "box", label: "Invitation Box — pack of 5", price: 1500 },
+],
+variantFieldLabel: "Invitation Type",,
     personalizationFields: [
       {
         name: "eventType",
@@ -212,7 +220,7 @@ export const PRODUCTS = [
         name: "packaging",
         label: "Packaging style",
         type: "select",
-        options: ["Kraft Pouch", "Basket", "Small Box"],
+        options: ["Kraft Pouch", "Basket", "Box"],
         required: true,
       },
       {
