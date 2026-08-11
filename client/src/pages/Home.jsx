@@ -46,7 +46,6 @@ export default function Home() {
       className="hero-photo"
            />
          </div>
-        </div>
       </section>
 
       <section className="section container">
