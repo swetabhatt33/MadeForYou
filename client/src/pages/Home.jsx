@@ -35,8 +35,8 @@ export default function Home() {
               Gifts set delivered to <em>your</em> doorstep!
             </h1>
             <p className="lede">
-              Personalized giftboxes, handmade gift cards, and 
-              invitations — printed, and packed by hand for the
+              Personalized giftboxes, custom greeting cards, 
+              invitations and return gifts, packed by hand for the
               person you're giving them to.
             </p>
             <div className="hero-cta">
