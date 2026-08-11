@@ -28,7 +28,6 @@ export default function Home() {
   return (
     <>
       <section className="hero">
-        <span className="hero-ghost-letter">{initials[0] || "V"}</span>
         <div className="container hero-grid">
           <div>
             <span className="eyebrow">Personalized · Made to order</span>
@@ -40,23 +39,18 @@ export default function Home() {
               invitations — printed, and packed by hand for the
               person you're giving them to.
             </p>
-            <div className="hero-actions">
-              <Link to="#gift-box" className="btn btn-primary">
-                Browse the collection
-              </Link>
-              <a href="#how-it-works" className="btn btn-ghost">
-                How personalization works
-              </a>
-            </div>
           </div>
+           <img
+      src="/images/hero-photo.jpg"
+      alt="Personalized gifts made for you"
+      className="hero-photo"
+           />
+         </div>
         </div>
       </section>
 
       <section className="section container">
-        <div className="section-heading">
-          <h2>The collection</h2>
-          <p>Three ways to personalize a gift — set by hand to order.</p>
-        </div>
+  
 
         {loading && <p>Loading the collection…</p>}
         {error && <p className="error-text">{error}</p>}
@@ -88,37 +82,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section container" id="how-it-works">
-        <div className="section-heading">
-          <h2>How personalization works</h2>
-          <p>Every piece moves through the same three steps before it ships.</p>
-        </div>
-        <div className="catalogue catalogue-steps">
-          <div className="catalogue-item" style={{ cursor: "default" }}>
-          <span className="plate-number">Step 01</span>
-          <h3>You choose the words</h3>
-          <p className="tagline">
-          Names, a date, a message — entered on the product page and
-          shown back to you before it's set.
-          </p>
-          </div>
-          <div className="catalogue-item" style={{ cursor: "default" }}>
-            <span className="plate-number">Step 02</span>
-            <h3>We set it by hand</h3>
-            <p className="tagline">
-              Your words transformed into a beautiful peom, just for your loved one.
-            </p>
-          </div>
-          <div className="catalogue-item" style={{ cursor: "default" }}>
-            <span className="plate-number">Step 03</span>
-            <h3>It arrives wrapped</h3>
-            <p className="tagline">
-              Wrapped with love and ready to give — or shipped directly to
-              your recipient.
-            </p>
-          </div>
-        </div>
-      </section>
+      
     </>
   );
 }
