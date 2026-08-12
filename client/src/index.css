@@ -359,7 +359,7 @@ border: 1px solid var(--line);
 }
 .catalogue-item {
   background: var(--vellum-soft);
-  padding: 40px 32px;
+  padding: 15px 10px;
   text-decoration: none;
   color: inherit;
   display: flex;
@@ -387,12 +387,12 @@ border: 1px solid var(--line);
   color: var(--brass);
 }
 .catalogue-item h3 {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 }
 .catalogue-item p.tagline {
   color: var(--charcoal);
   opacity: 0.75;
-  font-size: 0.98rem;
+  font-size: 0.60rem;
   flex-grow: 1;
 }
 .catalogue-item .price-from {
