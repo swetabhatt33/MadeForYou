@@ -35,53 +35,56 @@ export default function Home() {
               Gifts delivered to <em>your</em> doorstep!
             </h1>
             <p className="lede">
-              Personalized giftboxes, custom greeting cards, 
+              Personalized giftboxes, custom greeting cards,
               invitations and return gifts, packed by hand for the
               person you're giving them to.
             </p>
             <div className="hero-actions">
-            <a href="#gift-box" className="btn btn-primary btn-small">
-              Browse the collection
-            </a>
+              <a href="#gift-box" className="btn btn-primary btn-small">
+                Browse the collection
+              </a>
+            </div>
           </div>
-          </div>
-           <img
-      src="/images/hero-photo.jpg"
-      alt="Personalized gifts made for you"
-      className="hero-photo"
-           />
-         </div>
+          <img
+            src="/images/hero-photo.jpg"
+            alt="Personalized gifts made for you"
+            className="hero-photo"
+          />
+        </div>
       </section>
 
       <section className="section container">
-        <h1>Our collection </h1>
-        
-        <div className="catalogue">
-  {products.map((product, i) => (
-    <Link
-      key={product.id}
-      to={`/product/${product.id}`}
-      id={product.id}
-      className="catalogue-item"
-    >
-     <h3>{product.name}</h3>
+        <h1>Our collection</h1>
 
-      <ProductImage
-        id={product.id}
-        name={product.name}
-        theme={product.theme}
-        images={product.images}
-        className="catalogue-photo"
-        iconClassName="catalogue-icon"
-      />
-      
-      <p className="tagline">{product.tagline}</p>
-      
-      <div className="price-row">
-        <button className="price-from">
-          From {formatPrice(Math.min(...product.variants.map((v) => v.price)))}
-        </button>
-      </div>
+        <div className="catalogue">
+          {products.map((product, i) => (
+            <Link
+              key={product.id}
+              to={`/product/${product.id}`}
+              id={product.id}
+              className="catalogue-item"
+            >
+              <h3>{product.name}</h3>
+
+              <ProductImage
+                id={product.id}
+                name={product.name}
+                theme={product.theme}
+                images={product.images}
+                className="catalogue-photo"
+                iconClassName="catalogue-icon"
+              />
+
+              <p className="tagline">{product.tagline}</p>
+
+              <div className="price-row">
+                <button className="price-from">
+                  From {formatPrice(Math.min(...product.variants.map((v) => v.price)))}
+                </button>
+              </div>
+            </Link>
+          ))}
+        </div>
       </section>
     </>
   );
