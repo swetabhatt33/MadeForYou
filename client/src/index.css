@@ -429,8 +429,8 @@ border: 1px solid var(--line);
 .product-visual-gift-box {
   aspect-ratio: 5/4;
 }
-.product-visual-gift-card {
-  aspect-ratio: 8/4;
+.product-visual-greeting-card {
+  aspect-ratio: 6/4;
 }
 .product-visual-invitations {
   aspect-ratio: 7/10;
