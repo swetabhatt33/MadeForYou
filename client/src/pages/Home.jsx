@@ -57,30 +57,37 @@ export default function Home() {
         <h1>Our collection </h1>
         
         <div className="catalogue">
-          {products.map((product, i) => (
-            <Link
-              key={product.id}
-              to={`/product/${product.id}`}
-              id={product.id}
-              className="catalogue-item"
-            >
-              <h3>{product.name}</h3>
-              <p className="tagline">{product.tagline}</p>
-              <ProductImage
-                id={product.id}
-                name={product.name}
-                theme={product.theme}
-                images={product.images}
-                className="catalogue-photo"
-                iconClassName="catalogue-icon"
-              />
-      
-              <span className="price-from">
-                From {formatPrice(Math.min(...product.variants.map((v) => v.price)))}
-              </span>
-            </Link>
-          ))}
-        </div>
+  {products.map((product, i) => (
+    <Link
+      key={product.id}
+      to={`/product/${product.id}`}
+      id={product.id}
+      className="catalogue-item"
+    >
+      <h3>{product.name}</h3>
+
+      <ProductImage
+        id={product.id}
+        name={product.name}
+        theme={product.theme}
+        images={product.images}
+        className="catalogue-photo"
+        iconClassName="catalogue-icon"
+      />
+
+      <p className="tagline">{product.tagline}</p>
+
+      <div className="price-row">
+        <span className="price-from">
+          From {formatPrice(Math.min(...product.variants.map((v) => v.price)))}
+        </span>
+        <button className="btn btn-primary btn-small">
+          Shop Now
+        </button>
+      </div>
+      </Link>
+     ))}
+       </div>
       </section>
 
       
