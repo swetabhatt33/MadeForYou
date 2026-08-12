@@ -217,13 +217,14 @@ textarea:focus-visible {
   gap: 48px;
   align-items: center;
 }
-.hero-photo { 
-width: 100%; 
-height: auto; 
-max-height: 480px; 
-object-fit: cover; 
-border-radius: 4px; 
-border: 1px solid var(--line); 
+.hero-photo {
+  width: 100%;
+  height: auto;
+  max-height: 480px;
+  object-fit: contain;      
+  border: none;             
+  filter: drop-shadow(0 18px 30px var(--shadow)) 
+          drop-shadow(0 2px 4px rgba(0,0,0,0.15));
 }
 .hero h1 {
   font-size: 3.4rem;
