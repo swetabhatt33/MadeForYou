@@ -400,8 +400,36 @@ border: 1px solid var(--line);
   font-size: 0.88rem;
   font-weight: 600;
   color: var(--ink);
+}
+.price-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
   padding-top: 8px;
   border-top: 1px solid var(--line);
+}
+
+.catalogue-item .price-from {
+  border-top: none;
+  padding-top: 0;
+}
+
+.catalogue-item .btn-shop {
+  font-family: var(--font-utility);
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+  color: var(--vellum-soft);
+  background: var(--ink);
+  border: 1px solid var(--ink);
+  border-radius: 2px;
+  padding: 7px 14px;
+  transition: background 0.15s ease;
+}
+.catalogue-item .btn-shop:hover {
+  background: var(--brass);
+  border-color: var(--brass);
 }
 
 /* ---------- Product detail ---------- */
