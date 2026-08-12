@@ -748,7 +748,6 @@ textarea {
   color: var(--charcoal);
   opacity: 0.65;
 }
-
 @media (max-width: 860px) {
   .hero-grid,
   .product-detail {
@@ -758,7 +757,22 @@ textarea {
     position: static;
   }
   .catalogue {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .catalogue-item {
+    padding: 12px 8px;
+    gap: 10px;
+  }
+  .catalogue-item h3 {
+    font-size: 0.95rem;
+    line-height: 1.25;
+  }
+  .catalogue-item p.tagline {
+    font-size: 0.72rem;
+  }
+  .catalogue-item .price-from {
+    font-size: 0.78rem;
+    padding: 10px 8px;
   }
   .hero h1 {
     font-size: 2.4rem;
@@ -775,7 +789,7 @@ textarea {
     padding-right: 20px;
   }
   .tagline strong {
-  color: var(--ink);
-  font-weight: 700;
+    color: var(--ink);
+    font-weight: 700;
   }
 }
