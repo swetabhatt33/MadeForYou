@@ -64,7 +64,7 @@ export default function Home() {
       id={product.id}
       className="catalogue-item"
     >
-      <h3>{product.name}</h3>
+     <h3>{product.name}</h3>
 
       <ProductImage
         id={product.id}
@@ -78,10 +78,9 @@ export default function Home() {
       <p className="tagline">{product.tagline}</p>
       
       <div className="price-row">
-        <span className="price-from">
+        <button className="price-from">
           From {formatPrice(Math.min(...product.variants.map((v) => v.price)))}
-        </span>
-        <button className="btn-shop">Shop Now</button>
+        </button>
       </div>
       </section>
     </>
