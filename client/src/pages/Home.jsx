@@ -74,23 +74,16 @@ export default function Home() {
         className="catalogue-photo"
         iconClassName="catalogue-icon"
       />
-
+      
       <p className="tagline">{product.tagline}</p>
-
+      
       <div className="price-row">
         <span className="price-from">
           From {formatPrice(Math.min(...product.variants.map((v) => v.price)))}
         </span>
-        <button className="btn btn-primary btn-small">
-          Shop Now
-        </button>
+        <button className="btn-shop">Shop Now</button>
       </div>
-      </Link>
-     ))}
-       </div>
       </section>
-
-      
     </>
   );
 }
