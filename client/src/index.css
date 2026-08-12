@@ -208,7 +208,7 @@ textarea:focus-visible {
 .hero {
   position: relative;
   overflow: hidden;
-  padding: 10px 0 10px;
+  padding: 20px 20px;
   border-bottom: 1px solid var(--line);
 }
 .hero-grid {
