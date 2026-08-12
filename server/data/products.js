@@ -25,8 +25,8 @@ export const PRODUCTS = [
     colorImages: {
     fieldName: "boxColor",
     options: {
-      "Ivory/Gold": "",
-      "Purple/Silver": "",
+      "Ivory/Gold": "images/gift-box-5.jpg",
+      "Purple/Silver": "images/gift-box-4.jpg",
       "Blue/Sliver": "/images/gift-box-1.jpg",
       "Burgundy/White": "/images/gift-box-2.jpg",
       "Rose Pink/Gold": "/images/gift-box-3.jpg",
