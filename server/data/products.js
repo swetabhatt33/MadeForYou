@@ -20,7 +20,9 @@ export const PRODUCTS = [
     images: [
       "/images/gift-box-1.jpg",
       "/images/gift-box-2.jpg",
-      "/images/gift-box-3.jpg"
+      "/images/gift-box-3.jpg",
+      "/images/gift-box-4.jpg",
+	  "/images/gift-box-5.jpg",
     ],
     colorImages: {
     fieldName: "boxColor",
