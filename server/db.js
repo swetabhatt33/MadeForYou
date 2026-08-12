@@ -1,75 +1,61 @@
-// Minimal file-backed order store.
-//
-// This is intentionally simple so the project runs with zero external
-// services. For real production traffic, swap this module out for a
-// proper database (Postgres, etc.) — the function signatures below are
-// the only thing the rest of the app depends on, so that's the only
-// contract you need to preserve.
+import { Pool } from "pg";
 
-import { readFile, writeFile } from "fs/promises";
-import { existsSync, writeFileSync } from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
-
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const DB_FILE = path.join(__dirname, "data", "orders.json");
-
-if (!existsSync(DB_FILE)) {
-  writeFileSync(DB_FILE, "[]", "utf-8");
+if (!process.env.DATABASE_URL) {
+  console.warn(
+    "⚠️  DATABASE_URL is not set — order storage will fail until you add it to server/.env"
+  );
 }
 
-// Very small in-process write queue so concurrent requests don't clobber
-// each other's writes to the JSON file.
-let queue = Promise.resolve();
-function enqueue(fn) {
-  const result = queue.then(fn);
-  queue = result.catch(() => {});
-  return result;
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: /sslmode=require|render\.com/.test(process.env.DATABASE_URL || "")
+    ? { rejectUnauthorized: false }
+    : false,
+});
+
+const ready = pool.query(`
+  CREATE TABLE IF NOT EXISTS orders (
+    id TEXT PRIMARY KEY,
+    stripe_session_id TEXT,
+    data JSONB NOT NULL,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT now()
+  );
+  CREATE INDEX IF NOT EXISTS idx_orders_stripe_session_id
+    ON orders (stripe_session_id);
+`);
+
+export async function saveOrder(order) {
+  await ready;
+  await pool.query(
+    `INSERT INTO orders (id, stripe_session_id, data) VALUES ($1, $2, $3)`,
+    [order.id, order.stripeSessionId || null, order]
+  );
+  return order;
 }
 
-async function readAll() {
-  const raw = await readFile(DB_FILE, "utf-8");
-  try {
-    return JSON.parse(raw);
-  } catch {
-    return [];
-  }
+export async function getOrder(orderId) {
+  await ready;
+  const res = await pool.query(`SELECT data FROM orders WHERE id = $1`, [orderId]);
+  return res.rows[0]?.data ?? null;
 }
 
-async function writeAll(orders) {
-  await writeFile(DB_FILE, JSON.stringify(orders, null, 2), "utf-8");
+export async function updateOrder(orderId, patch) {
+  await ready;
+  const existing = await getOrder(orderId);
+  if (!existing) return null;
+  const updated = { ...existing, ...patch };
+  await pool.query(
+    `UPDATE orders SET data = $2, stripe_session_id = $3 WHERE id = $1`,
+    [orderId, updated, updated.stripeSessionId || null]
+  );
+  return updated;
 }
 
-export function saveOrder(order) {
-  return enqueue(async () => {
-    const orders = await readAll();
-    orders.push(order);
-    await writeAll(orders);
-    return order;
-  });
-}
-
-export function getOrder(orderId) {
-  return enqueue(async () => {
-    const orders = await readAll();
-    return orders.find((o) => o.id === orderId) || null;
-  });
-}
-
-export function updateOrder(orderId, patch) {
-  return enqueue(async () => {
-    const orders = await readAll();
-    const idx = orders.findIndex((o) => o.id === orderId);
-    if (idx === -1) return null;
-    orders[idx] = { ...orders[idx], ...patch };
-    await writeAll(orders);
-    return orders[idx];
-  });
-}
-
-export function findOrderByStripeSessionId(sessionId) {
-  return enqueue(async () => {
-    const orders = await readAll();
-    return orders.find((o) => o.stripeSessionId === sessionId) || null;
-  });
+export async function findOrderByStripeSessionId(sessionId) {
+  await ready;
+  const res = await pool.query(
+    `SELECT data FROM orders WHERE stripe_session_id = $1`,
+    [sessionId]
+  );
+  return res.rows[0]?.data ?? null;
 }
