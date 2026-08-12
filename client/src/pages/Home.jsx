@@ -46,7 +46,7 @@ export default function Home() {
             </div>
           </div>
           <img
-            src="/images/hero-photo.jpg"
+            src="/images/hero-photo.png"
             alt="Personalized gifts made for you"
             className="hero-photo"
           />
