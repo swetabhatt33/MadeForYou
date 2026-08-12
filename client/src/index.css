@@ -364,6 +364,8 @@ border: 1px solid var(--line);
   color: inherit;
   display: flex;
   flex-direction: column;
+  align-items: center;      /* centers image + heading */
+  text-align: center;       /* centers all text in the card */
   gap: 18px;
   transition: background 0.2s ease;
 }
@@ -379,6 +381,7 @@ border: 1px solid var(--line);
   aspect-ratio: 4/3;
   object-fit: cover;
   border-radius: 2px;
+  display: block;           /* removes inline-image gap for tighter alignment */
 }
 .catalogue-item .plate-number {
   font-family: var(--font-utility);
@@ -388,46 +391,38 @@ border: 1px solid var(--line);
 }
 .catalogue-item h3 {
   font-size: 1.2rem;
+  text-align: center;
 }
 .catalogue-item p.tagline {
   color: var(--charcoal);
   opacity: 0.75;
   font-size: 0.80rem;
   flex-grow: 1;
+  text-align: center;
 }
-.catalogue-item .price-from {
-  font-family: var(--font-utility);
-  font-size: 0.88rem;
-  font-weight: 600;
-  color: var(--ink);
-}
-.price-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
+
+/* price is now the button itself */
+.catalogue-item .price-row {
+  width: 100%;
   padding-top: 8px;
   border-top: 1px solid var(--line);
 }
-
 .catalogue-item .price-from {
-  border-top: none;
-  padding-top: 0;
-}
-
-.catalogue-item .btn-shop {
+  display: block;
+  width: 100%;
   font-family: var(--font-utility);
-  font-weight: 600;
-  font-size: 0.78rem;
+  font-size: 0.88rem;
+  font-weight: 700;
   letter-spacing: 0.02em;
   color: var(--vellum-soft);
   background: var(--ink);
   border: 1px solid var(--ink);
   border-radius: 2px;
-  padding: 7px 14px;
-  transition: background 0.15s ease;
+  padding: 12px 16px;
+  text-align: center;
+  transition: background 0.15s ease, border-color 0.15s ease;
 }
-.catalogue-item .btn-shop:hover {
+.catalogue-item .price-from:hover {
   background: var(--brass);
   border-color: var(--brass);
 }
