@@ -324,7 +324,7 @@ border: 1px solid var(--line);
 
 /* ---------- Category rail ---------- */
 .section {
-  padding: 84px 0;
+  padding: 40px 0;
 }
 .section-heading {
   display: flex;
