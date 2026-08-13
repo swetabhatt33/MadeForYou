@@ -22,11 +22,21 @@ export default function ProductImage({
       <img
         src={src}
         alt={name}
-        className={className}
+        className={`${className} photo-${id}`}
         onError={() => setFailed(true)}
       />
     );
   }
 
-  return <ProductIcon productId={id} theme={theme} className={iconClassName} />;
+  // No photo (or it failed to load) — reserve the exact same box the
+  // photo would have used, so cards without a photo don't throw off
+  // alignment next to cards that have one.
+  return (
+    <div
+      className={`${className} photo-fallback`}
+      style={{ display: "flex", alignItems: "center", justifyContent: "center" }}
+    >
+      <ProductIcon productId={id} theme={theme} className={iconClassName} />
+    </div>
+  );
 }
