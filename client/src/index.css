@@ -454,7 +454,11 @@ textarea:focus-visible {
   aspect-ratio: 5/4;
 }
 .product-visual-greeting-card {
-  aspect-ratio: 3/2;
+  aspect-ratio: 16/9;
+}
+.product-visual-greeting-card .product-photo {
+  object-fit: contain;
+  background: var(--vellum-soft);
 }
 .product-visual-invitations {
   aspect-ratio: 5/6;
