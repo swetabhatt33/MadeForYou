@@ -83,6 +83,7 @@ export const PRODUCTS = [
     images: [
       "/images/greeting-card-1.jpg",
       "/images/greeting-card-2.jpg",
+	  "/images/greeting-card-3.jpg",
     ],
     variants: [{ id: "standard", label: "Greeting Card", price: 1500 }],
     personalizationFields: [
