@@ -772,7 +772,7 @@ textarea {
     grid-template-columns: 1fr;
   }
   .gallery-col {
-    position: sticky
+    position: static
   }
   .catalogue {
     grid-template-columns: repeat(2, 1fr);
