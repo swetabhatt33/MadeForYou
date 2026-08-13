@@ -384,6 +384,13 @@ textarea:focus-visible {
   border-radius: 2px;
   display: block;           /* removes inline-image gap for tighter alignment */
 }
+.catalogue-photo.photo-fallback {
+  background: var(--vellum-soft);
+}
+.photo-invitations {
+  object-fit: contain;
+  background: var(--vellum-soft);
+}
 .catalogue-item .plate-number {
   font-family: var(--font-utility);
   font-size: 0.75rem;
