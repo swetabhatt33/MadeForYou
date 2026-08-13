@@ -463,6 +463,11 @@ textarea:focus-visible {
 .product-visual-invitations {
   aspect-ratio: 5/6;
 }
+
+.product-visual-invitations {
+  aspect-ratio: 5/6;
+  max-width: 420px;
+}
 .product-visual-return-gifts {
   aspect-ratio: 1/1;
 }
