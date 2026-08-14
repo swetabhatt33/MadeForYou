@@ -78,8 +78,8 @@ export default function Home() {
               <p className="tagline">{product.tagline}</p>
 
               <div className="price-row">
-                <button className="price-from">
-                  From {formatPrice(Math.min(...product.variants.map((v) => v.price)))}
+                <button className="shop-Now">
+                  Shop Now
                 </button>
               </div>
             </Link>
