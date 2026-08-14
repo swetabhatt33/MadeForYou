@@ -188,7 +188,7 @@ variantFieldLabel: "Invitation Type",
       "/images/return-gifts-2.jpg",
     ],
 variants: [
-  {label: "$50 — pack of 7"}
+  {{ id: "return gift", label: "pack of 7", price: 5200 }
 ],
 variantFieldLabel: "Packaging Type",
     personalizationFields: [
@@ -211,10 +211,7 @@ variantFieldLabel: "Packaging Type",
         label: "Packaging Type",
         type: "select",
         options: 
-			[{"Kraft bag", price: 5000},
-			 {"Basket",price: 5000},
-			 {"Box", price: 5000}
-			],
+			["Kraft bag","Basket","Box"],
         required: true,
       },
       {
