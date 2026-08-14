@@ -82,6 +82,7 @@ export default function Home() {
                   Shop Now
                 </button>
               </div>
+            </Link>
           ))}
         </div>
       </section>
