@@ -78,7 +78,7 @@ export default function Home() {
               <p className="tagline">{product.tagline}</p>
 
               <div className="price-row">
-                <button className="price-from">
+                <button className="btn btn-primary btn-small">
                   Shop Now
                 </button>
               </div>
