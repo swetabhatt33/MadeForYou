@@ -78,11 +78,10 @@ export default function Home() {
               <p className="tagline">{product.tagline}</p>
 
               <div className="price-row">
-                <button className="shop-Now">
+                <button className="price-from">
                   Shop Now
                 </button>
               </div>
-            </Link>
           ))}
         </div>
       </section>
