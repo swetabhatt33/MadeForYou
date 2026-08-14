@@ -188,7 +188,7 @@ variantFieldLabel: "Invitation Type",
       "/images/return-gifts-2.jpg",
     ],
 variants: [
-  {{ id: "return-gift-type", label: "pack of 7", price: 5200 }
+  { id: "return-gift", label: "Pack of 7", price: 5200 }
 ],
     personalizationFields: [
       {
@@ -206,7 +206,7 @@ variants: [
         required: false,
       },
 	 {
-        name: "packaging type",
+        name: "packagingType",
         label: "Packaging Type",
         type: "select",
         options: 
@@ -214,7 +214,7 @@ variants: [
         required: true,
       },
       {
-        name: "gift options",
+        name: "giftOptions",
         label: "Gift Options",
         type: "select",
         options: 
@@ -225,7 +225,7 @@ variants: [
         required: true,
       },
       {
-        name: "Additional Note",
+        name: "additionalNote",
         label: "Additional Note",
         type: "textarea",
         maxLength: 120,
