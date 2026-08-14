@@ -545,9 +545,6 @@ textarea:focus-visible {
   border-color: var(--brass);
   background: #fff;
 }
-.back-button-row {
-  padding-top: 20px;
-}
 .product-info h1 {
   font-size: 2.4rem;
   margin-bottom: 10px;
