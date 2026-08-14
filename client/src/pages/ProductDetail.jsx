@@ -84,7 +84,7 @@ export default function ProductDetail() {
       />
 
       <div className="product-info">
-        <Link to="/" className="crumb">
+        <Link to="/" className="crumb back-button">
           ← Back to the collection
         </Link>
         <h1>{product.name}</h1>
