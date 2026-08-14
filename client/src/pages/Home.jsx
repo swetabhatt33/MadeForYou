@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { api, formatPrice } from "../lib/api";
+import { api } from "../lib/api";
 import ProductImage from "../components/ProductImage";
 import WaxSeal from "../components/WaxSeal";
 
