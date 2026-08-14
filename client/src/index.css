@@ -529,6 +529,25 @@ textarea:focus-visible {
   text-decoration: none;
   display: inline-block;
 }
+.back-button {
+  opacity: 1;
+  font-weight: 600;
+  font-size: 0.86rem;
+  color: var(--ink);
+  background: var(--vellum-soft);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.back-button:hover {
+  border-color: var(--brass);
+  background: #fff;
+}
+.back-button-row {
+  padding-top: 20px;
+}
 .product-info h1 {
   font-size: 2.4rem;
   margin-bottom: 10px;
