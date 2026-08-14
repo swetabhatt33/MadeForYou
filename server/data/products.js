@@ -188,9 +188,8 @@ variantFieldLabel: "Invitation Type",
       "/images/return-gifts-2.jpg",
     ],
 variants: [
-  {{ id: "return gift", label: "pack of 7", price: 5200 }
+  {{ id: "return-gift-type", label: "pack of 7", price: 5200 }
 ],
-variantFieldLabel: "Packaging Type",
     personalizationFields: [
       {
         name: "eventType",
