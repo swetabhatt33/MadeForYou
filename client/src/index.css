@@ -469,7 +469,7 @@ textarea:focus-visible {
   background: var(--vellum-soft);
 }
 .product-visual-invitations {
-  aspect-ratio: 16/9;
+  aspect-ratio: 9/16;
   max-width: 420px;
 }
 
