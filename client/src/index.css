@@ -175,6 +175,28 @@ textarea:focus-visible {
   font-size: 0.9rem;
   font-weight: 500;
 }
+
+.mobile-menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+.mobile-menu-toggle span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--ink);
+}
+.mobile-nav-panel {
+  display: none;
+}
 .nav-links a {
   text-decoration: none;
   color: var(--ink);
@@ -813,6 +835,23 @@ textarea {
   .nav-links {
     display: none;
   }
+  .mobile-menu-toggle {
+  display: flex;
+}
+.mobile-nav-panel {
+  display: flex;
+  flex-direction: column;
+  padding: 4px 20px 18px;
+  border-top: 1px solid var(--line);
+  font-family: var(--font-utility);
+  font-size: 0.95rem;
+}
+.mobile-nav-panel a {
+  padding: 12px 0;
+  text-decoration: none;
+  color: var(--ink);
+  border-bottom: 1px solid var(--line);
+}
   .site-header .row,
   .container {
     padding-left: 20px;
