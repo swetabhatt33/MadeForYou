@@ -188,9 +188,7 @@ variantFieldLabel: "Invitation Type",
       "/images/return-gifts-2.jpg",
     ],
 variants: [
-  { id: "kraft-pouch", label: "Kraft Pouch — pack of 7", price: 5000 },
-  { id: "basket", label: "Basket — pack of 7", price: 5000 },
-  { id: "box", label: "Box — pack of 7", price: 5000 },
+  {label: "$50 — pack of 7"}
 ],
 variantFieldLabel: "Packaging Type",
     personalizationFields: [
@@ -207,6 +205,17 @@ variantFieldLabel: "Packaging Type",
         type: "text",
         maxLength: 40,
         required: false,
+      },
+	 {
+        name: "packaging type",
+        label: "Packaging Type",
+        type: "select",
+        options: 
+			[{"Kraft bag", price: 5000},
+			 {"Basket",price: 5000},
+			 {"Box", price: 5000}
+			],
+        required: true,
       },
       {
         name: "gift options",
