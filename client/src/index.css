@@ -462,18 +462,19 @@ textarea:focus-visible {
 }
 .product-visual-greeting-card {
   aspect-ratio: 16/9;
+  max-width: 420px;
 }
 .product-visual-greeting-card .product-photo {
   object-fit: contain;
   background: var(--vellum-soft);
 }
 .product-visual-invitations {
-  aspect-ratio: 4/3;
+  aspect-ratio: 16/9;
   max-width: 420px;
 }
 
 .product-visual-return-gifts {
-  aspect-ratio: 5/4;
+  aspect-ratio: 16/9;
 }
 
 .product-visual svg {
