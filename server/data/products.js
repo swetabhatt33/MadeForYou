@@ -64,13 +64,12 @@ export const PRODUCTS = [
         options: ["Ivory/Gold", "Purple/Silver", "Blue/Sliver", "Burgundy/White","Rose Pink/Gold"],
         required: true,
       },
-	{
-        name: "chocolateType",
-        label: "Chocolate flavour",
-        type: "select",
-        options: ["Lindt - Dark chocolate ", "Ferrero Rocher"],
-        required: true,
-      },
+	 {
+	  name: "customPhoto",
+	  label: "Upload a photo (for the photo frame)",
+	  type: "image-upload",
+	  required: false,
+	 },		
     ],
   },
   {
@@ -108,6 +107,12 @@ export const PRODUCTS = [
         maxLength: 200,
         required: false,
       },
+	 {
+	  name: "customPhoto",
+	  label: "Upload a photo (for the photo frame)",
+	  type: "image-upload",
+	  required: false,
+	},
     ],
   },
   {
