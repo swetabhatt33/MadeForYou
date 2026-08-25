@@ -18,6 +18,17 @@ export const api = {
   createCheckout: (payload) =>
     request("/api/checkout", { method: "POST", body: JSON.stringify(payload) }),
   getOrder: (id) => request(`/api/checkout/order/${id}`),
+  uploadImage: async (file) => {
+  const form = new FormData();
+  form.append("photo", file);
+  const res = await fetch(`${API_URL}/api/uploads`, {
+    method: "POST",
+    body: form,
+  });
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.error || "Upload failed.");
+  return data;
+},
 };
 
 export function formatPrice(cents) {
