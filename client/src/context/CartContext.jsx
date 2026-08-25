@@ -26,6 +26,12 @@ export function CartProvider({ children }) {
   const removeItem = (cartId) => {
     setItems((prev) => prev.filter((i) => i.cartId !== cartId));
   };
+  const updateQuantity = (cartId, newQuantity) => {
+  const clamped = Math.max(1, Math.min(10, newQuantity));
+  setItems((prev) =>
+    prev.map((i) => (i.cartId === cartId ? { ...i, quantity: clamped } : i))
+  );
+};
 
   const clearCart = () => setItems([]);
 
@@ -38,7 +44,7 @@ export function CartProvider({ children }) {
 
   return (
     <CartContext.Provider
-      value={{ items, addItem, removeItem, clearCart, subtotal, count }}
+    value={{ items, addItem, removeItem, updateQuantity, clearCart, subtotal, count }}
     >
       {children}
     </CartContext.Provider>
