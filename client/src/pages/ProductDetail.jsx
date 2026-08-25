@@ -4,6 +4,7 @@ import { api, formatPrice } from "../lib/api";
 import { useCart } from "../context/CartContext";
 import ProductGallery from "../components/ProductGallery";
 import { renderRichText } from "../lib/richText";
+import ImageUploadField from "../components/ImageUploadField";
 
 export default function ProductDetail() {
   const { id } = useParams();
@@ -175,6 +176,9 @@ function PersonalizationInput({ field, value, onChange }) {
         )}
       </>
     );
+  }
+  if (field.type === "image-upload") {
+  return <ImageUploadField id={field.name} value={value} onChange={onChange} />;
   }
 
   if (field.type === "select") {
