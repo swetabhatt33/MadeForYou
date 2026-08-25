@@ -22,7 +22,6 @@ app.use("/api/webhook", express.raw({ type: "application/json" }), webhookRouter
 app.use(express.json());
 
 // Publicly serve uploaded customer photos.
-app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 app.get("/api/health", (req, res) => res.json({ ok: true }));
 app.use("/api/products", productsRouter);
