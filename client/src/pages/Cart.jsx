@@ -5,11 +5,12 @@ import { api, formatPrice } from "../lib/api";
 import ProductImage from "../components/ProductImage";
 
 export default function Cart() {
-  const { items, removeItem, subtotal } = useCart();
+  const { items, removeItem, updateQuantity, subtotal } = useCart();
   const [searchParams] = useSearchParams();
   const [email, setEmail] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState(null);
+  
 
   const canceled = searchParams.get("canceled");
 
@@ -72,9 +73,28 @@ export default function Cart() {
             </div>
             <div>
               <h4>{item.productName}</h4>
-              <p className="meta">
-                {item.variantLabel} · Qty {item.quantity}
-              </p>
+                            <p className="meta">{item.variantLabel}</p>
+              <div className="qty-stepper">
+                <button
+                  type="button"
+                  className="qty-btn"
+                  onClick={() => updateQuantity(item.cartId, item.quantity - 1)}
+                  disabled={item.quantity <= 1}
+                  aria-label="Decrease quantity"
+                >
+                  −
+                </button>
+                <span className="qty-value">{item.quantity}</span>
+                <button
+                  type="button"
+                  className="qty-btn"
+                  onClick={() => updateQuantity(item.cartId, item.quantity + 1)}
+                  disabled={item.quantity >= 10}
+                  aria-label="Increase quantity"
+                >
+                  +
+                </button>
+              </div>
               <p className="personalization-summary">
                 {Object.entries(item.personalization)
                   .filter(([, v]) => v)
