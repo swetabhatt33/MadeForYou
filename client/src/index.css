@@ -861,4 +861,34 @@ textarea {
     color: var(--ink);
     font-weight: 700;
   }
+  .qty-stepper {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 6px 0;
+}
+.qty-btn {
+  width: 26px;
+  height: 26px;
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 2px;
+  font-family: var(--font-utility);
+  font-size: 0.95rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.qty-btn:hover:not(:disabled) {
+  border-color: var(--brass);
+}
+.qty-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.qty-value {
+  font-family: var(--font-utility);
+  font-weight: 600;
+  min-width: 20px;
+  text-align: center;
+}
 }
