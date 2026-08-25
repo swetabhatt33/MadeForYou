@@ -1,25 +1,12 @@
 import { Router } from "express";
 import multer from "multer";
-import path from "path";
-import { fileURLToPath } from "url";
-import { nanoid } from "nanoid";
-
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const UPLOADS_DIR = path.join(__dirname, "..", "uploads");
+import { uploadBufferToCloudinary } from "../cloudinary.js";
 
 const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp", "image/gif"];
 const MAX_SIZE_BYTES = 8 * 1024 * 1024; // 8MB
 
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => cb(null, UPLOADS_DIR),
-  filename: (req, file, cb) => {
-    const ext = path.extname(file.originalname).toLowerCase() || ".jpg";
-    cb(null, `${nanoid(16)}${ext}`);
-  },
-});
-
 const upload = multer({
-  storage,
+  storage: multer.memoryStorage(),
   limits: { fileSize: MAX_SIZE_BYTES },
   fileFilter: (req, file, cb) => {
     if (!ALLOWED_TYPES.includes(file.mimetype)) {
@@ -32,13 +19,19 @@ const upload = multer({
 export const uploadsRouter = Router();
 
 uploadsRouter.post("/", (req, res) => {
-  upload.single("photo")(req, res, (err) => {
+  upload.single("photo")(req, res, async (err) => {
     if (err) {
       return res.status(400).json({ error: err.message || "Upload failed." });
     }
     if (!req.file) {
       return res.status(400).json({ error: "No photo was received." });
     }
-    res.json({ url: `/uploads/${req.file.filename}` });
+    try {
+      const url = await uploadBufferToCloudinary(req.file.buffer, "uploads");
+      res.json({ url });
+    } catch (uploadErr) {
+      console.error("Cloudinary upload failed:", uploadErr.message);
+      res.status(500).json({ error: "Could not save the uploaded photo." });
+    }
   });
 });
