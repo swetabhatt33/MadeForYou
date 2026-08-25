@@ -1,11 +1,14 @@
 import "dotenv/config";
 import express from "express";
 import cors from "cors";
-
+import path from "path";
+import { fileURLToPath } from "url";
 import { productsRouter } from "./routes/products.js";
 import { checkoutRouter } from "./routes/checkout.js";
 import { webhookRouter } from "./routes/webhook.js";
+import { uploadsRouter } from "./routes/uploads.js";
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
 const PORT = process.env.PORT || 4000;
 const CLIENT_URL = process.env.CLIENT_URL || "http://localhost:5173";
@@ -18,9 +21,13 @@ app.use("/api/webhook", express.raw({ type: "application/json" }), webhookRouter
 
 app.use(express.json());
 
+// Publicly serve uploaded customer photos.
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+
 app.get("/api/health", (req, res) => res.json({ ok: true }));
 app.use("/api/products", productsRouter);
 app.use("/api/checkout", checkoutRouter);
+app.use("/api/uploads", uploadsRouter);
 
 app.use((err, req, res, next) => {
   console.error(err);
