@@ -864,7 +864,7 @@ textarea {
   .qty-stepper {
   display: inline-flex;
   align-items: center;
-  gap: 18px;
+  gap: 24px;
   margin: 6px 0;
 }
 .qty-btn {
