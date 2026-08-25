@@ -37,3 +37,8 @@ export function formatPrice(cents) {
     currency: "USD",
   });
 }
+export function resolveMediaUrl(pathOrUrl) {
+  if (!pathOrUrl) return pathOrUrl;
+  if (/^https?:\/\//i.test(pathOrUrl)) return pathOrUrl;
+  return `${API_URL}${pathOrUrl}`;
+}
