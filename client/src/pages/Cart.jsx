@@ -50,6 +50,9 @@ export default function Cart() {
 
   return (
     <div className="container cart-page">
+      <Link to="/#collection" className="crumb back-button">
+        ← Back to the collection
+      </Link>
       <h1>Your cart</h1>
 
       {canceled && (
