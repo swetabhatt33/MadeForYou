@@ -47,15 +47,22 @@ export default function ProductDetail() {
   };
 
   const validate = () => {
-    const nextErrors = {};
-    for (const field of product.personalizationFields) {
-      if (field.required && !String(personalization[field.name] || "").trim()) {
+  const nextErrors = {};
+  for (const field of product.personalizationFields) {
+    if (field.required) {
+      const val = personalization[field.name];
+      const isEmpty =
+        field.type === "image-upload"
+          ? !Array.isArray(val) || val.length === 0
+          : !String(val || "").trim();
+      if (isEmpty) {
         nextErrors[field.name] = `${field.label} is required.`;
       }
     }
-    setErrors(nextErrors);
-    return Object.keys(nextErrors).length === 0;
-  };
+  }
+  setErrors(nextErrors);
+  return Object.keys(nextErrors).length === 0;
+};
 
   const handleAddToCart = () => {
     if (!validate()) return;
