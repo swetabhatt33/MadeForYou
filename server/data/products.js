@@ -67,7 +67,7 @@ export const PRODUCTS = [
 	 {
 	  name: "customPhoto",
 	  label: "Upload a photo (For the photo frame and fridge magnet.)",
-	  hint: "Note: If you are ordering multiple quantities with different photos, please upload multiple pictures",
+	  hint: "Ordering More Than One? Please provide the recipient’s name, message, and photo for each individual item.",
 	  type: "image-upload",
 	  required: false,
 	 },		
@@ -111,7 +111,7 @@ export const PRODUCTS = [
 	 {
 	  name: "customPhoto",
 	  label: "Upload a photo (for front sketch of the card).",
-	  hint:	"Note : If you are ordering multiple quantities with different photos, please upload multiple pictures",
+	  hint:	"Ordering More Than One? Please provide the recipient’s name, message, and photo for each individual item.",
 	  type: "image-upload",
 	  required: false,
 	},
