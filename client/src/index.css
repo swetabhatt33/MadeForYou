@@ -661,6 +661,11 @@ textarea:focus-visible {
   color: var(--ink);
   opacity: 1;
 }
+
+.field-note strong {
+  color: var(--brass);
+  font-weight: 700;
+}
 .variant-options {
   display: flex;
   gap: 10px;
