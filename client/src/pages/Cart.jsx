@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { useCart } from "../context/CartContext";
-import { api, formatPrice } from "../lib/api";
+import { api, formatPrice, resolveMediaUrl } from "../lib/api";
 import ProductImage from "../components/ProductImage";
+
 
 export default function Cart() {
   const { items, removeItem, updateQuantity, subtotal } = useCart();
@@ -41,8 +42,8 @@ export default function Cart() {
       <div className="container empty-state">
         <h1>Your cart is empty</h1>
         <p>Personalize a gift box, gift card, or invitation to get started.</p>
-        <Link to="/" className="btn btn-primary">
-          Browse the collection
+        <Link to="/#collection" className="btn btn-primary">
+        Browse the collection
         </Link>
       </div>
     );
@@ -98,12 +99,24 @@ export default function Cart() {
                   +
                 </button>
               </div>
-              <p className="personalization-summary">
+                <p className="personalization-summary">
                 {Object.entries(item.personalization)
-                  .filter(([, v]) => v)
+                  .filter(([, v]) => v && !isImageValue(v) && !(Array.isArray(v) && v.length === 0))
                   .map(([k, v]) => `${prettyLabel(k)}: ${v}`)
                   .join(" · ")}
               </p>
+              {Object.entries(item.personalization)
+                .filter(([, v]) => isImageValue(v))
+                .flatMap(([k, v]) =>
+                  (Array.isArray(v) ? v : [v]).map((url, i) => (
+                    <img
+                      key={`${k}-${i}`}
+                      src={resolveMediaUrl(url)}
+                      alt="Custom artwork"
+                      className="personalization-image"
+                    />
+                  ))
+                )}
               <button className="remove-btn" onClick={() => removeItem(item.cartId)}>
                 Remove
               </button>
@@ -151,4 +164,10 @@ function prettyLabel(key) {
     .replace(/([A-Z])/g, " $1")
     .replace(/^./, (c) => c.toUpperCase())
     .trim();
+}
+
+function isImageValue(v) {
+  const isUrl = (s) =>
+    typeof s === "string" && (s.startsWith("/uploads/") || s.includes("res.cloudinary.com"));
+  return Array.isArray(v) ? v.length > 0 && v.every(isUrl) : isUrl(v);
 }
