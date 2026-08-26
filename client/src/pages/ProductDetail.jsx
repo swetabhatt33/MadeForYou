@@ -121,6 +121,7 @@ export default function ProductDetail() {
               {field.label}
               {field.required ? " *" : ""}
             </label>
+            {field.hint && <p className="field-hint">{field.hint}</p>}
             <PersonalizationInput
               field={field}
               value={personalization[field.name] || ""}
