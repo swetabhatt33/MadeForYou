@@ -128,7 +128,7 @@ export default function ProductDetail() {
               {field.label}
               {field.required ? " *" : ""}
             </label>
-            {field.hint && <p className="field-hint field-note">{field.hint}</p>}
+            {field.hint && <p className="field-hint field-note">{renderRichText(field.hint)}</p>}
             <PersonalizationInput
               field={field}
               value={personalization[field.name] ?? (field.type === "image-upload" ? [] : "")}
