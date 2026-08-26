@@ -67,7 +67,7 @@ export const PRODUCTS = [
 	 {
 	  name: "customPhoto",
 	  label: "Upload a photo (For the photo frame and fridge magnet.)",
-	  hint: "Ordering More Than One? Please provide the recipient’s name, message, and photo for each individual item.",
+	  hint: "**Ordering More Than One?** Please provide the recipient’s name, message, and photo for each individual item.",
 	  type: "image-upload",
 	  required: false,
 	 },		
@@ -111,7 +111,7 @@ export const PRODUCTS = [
 	 {
 	  name: "customPhoto",
 	  label: "Upload a photo (for front sketch of the card).",
-	  hint:	"Ordering More Than One? Please provide the recipient’s name, message, and photo for each individual item.",
+	  hint:	"**Ordering More Than One?** Please provide the recipient’s name, message, and photo for each individual item.",
 	  type: "image-upload",
 	  required: false,
 	},
@@ -147,6 +147,14 @@ variantFieldLabel: "Invitation Type",
         label: "Host / celebrant name(s)",
         type: "text",
         maxLength: 60,
+        required: true,
+      },
+	  {
+        name: "recipientName",
+        label: "Recipient name",
+		hint:	"**Ordering More Than One?** Please provide the names of all recipients",
+        type: "text",
+        maxLength: 200,
         required: true,
       },
       {
@@ -208,8 +216,9 @@ variants: [
       {
         name: "guestNote",
         label: "Name or note for the tag",
+		hint:	"**Ordering More Than One?** Please provide the names of all guests",
         type: "text",
-        maxLength: 40,
+        maxLength: 200,
         required: false,
       },
 	 {
