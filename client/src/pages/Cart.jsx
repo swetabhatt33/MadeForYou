@@ -105,18 +105,20 @@ export default function Cart() {
                   .map(([k, v]) => `${prettyLabel(k)}: ${v}`)
                   .join(" · ")}
               </p>
-              {Object.entries(item.personalization)
-                .filter(([, v]) => isImageValue(v))
-                .flatMap(([k, v]) =>
-                  (Array.isArray(v) ? v : [v]).map((url, i) => (
-                    <img
-                      key={`${k}-${i}`}
-                      src={resolveMediaUrl(url)}
-                      alt="Custom artwork"
-                      className="personalization-image"
-                    />
-                  ))
-                )}
+              <div className="personalization-images">
+                {Object.entries(item.personalization)
+                  .filter(([, v]) => isImageValue(v))
+                  .flatMap(([k, v]) =>
+                    (Array.isArray(v) ? v : [v]).map((url, i) => (
+                      <img
+                        key={`${k}-${i}`}
+                        src={resolveMediaUrl(url)}
+                        alt="Custom artwork"
+                        className="personalization-image"
+                      />
+                    ))
+                  )}
+              </div>
               <button className="remove-btn" onClick={() => removeItem(item.cartId)}>
                 Remove
               </button>
