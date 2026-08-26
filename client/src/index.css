@@ -606,6 +606,10 @@ textarea:focus-visible {
   opacity: 0.55;
   margin-top: 6px;
 }
+.field-hint.field-note {
+  color: var(--ink);
+  opacity: 1;
+}
 .variant-options {
   display: flex;
   gap: 10px;
