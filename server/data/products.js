@@ -66,7 +66,7 @@ export const PRODUCTS = [
       },
 	 {
 	  name: "customPhoto",
-	  label: "Upload a photo (for the photo frame)",
+	  label: "Upload a photo (For the photo frame and fridge magnet.) Note:If you want two different photos on magnet and photoframe please email the photos to us on madeforyou.vercel@gmail.com",
 	  type: "image-upload",
 	  required: false,
 	 },		
@@ -109,7 +109,7 @@ export const PRODUCTS = [
       },
 	 {
 	  name: "customPhoto",
-	  label: "Upload a photo (for the photo frame)",
+	  label: "Upload a photo (for front sketch of the card). Note:If you are ordering multiple quantities, please email photos to us on madeforyou.vercel@gmail.com",
 	  type: "image-upload",
 	  required: false,
 	},
