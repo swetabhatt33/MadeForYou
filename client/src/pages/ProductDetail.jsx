@@ -124,7 +124,7 @@ export default function ProductDetail() {
             {field.hint && <p className="field-hint field-note">{field.hint}</p>}
             <PersonalizationInput
               field={field}
-              value={personalization[field.name] || ""}
+              value={personalization[field.name] ?? (field.type === "image-upload" ? [] : "")}
               onChange={(v) => setField(field.name, v)}
             />
             {errors[field.name] && <p className="error-text">{errors[field.name]}</p>}
