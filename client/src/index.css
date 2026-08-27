@@ -543,7 +543,7 @@ textarea:focus-visible {
 }
 
 .product-visual-gift-box {
-  aspect-ratio: 6/5;
+  aspect-ratio: 2/3;
 }
 .product-visual-greeting-card {
   aspect-ratio: 4/3;
@@ -554,7 +554,10 @@ textarea:focus-visible {
 }
 .product-visual-invitations {
   aspect-ratio: 4/3;
-  max-width: 420px;
+}
+.product-visual-invitations .product-photo {
+  object-fit: contain;
+  background: var(--vellum-soft);
 }
 
 .product-visual-return-gifts {
