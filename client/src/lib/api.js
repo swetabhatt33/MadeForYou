@@ -18,17 +18,27 @@ export const api = {
   createCheckout: (payload) =>
     request("/api/checkout", { method: "POST", body: JSON.stringify(payload) }),
   getOrder: (id) => request(`/api/checkout/order/${id}`),
+  sendContactMessage: async (payload) => {
+    const res = await fetch(`${API_URL}/api/contact`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || "Couldn't send your message.");
+    return data;
+  },
   uploadImage: async (file) => {
-  const form = new FormData();
-  form.append("photo", file);
-  const res = await fetch(`${API_URL}/api/uploads`, {
-    method: "POST",
-    body: form,
-  });
-  const data = await res.json();
-  if (!res.ok) throw new Error(data.error || "Upload failed.");
-  return data;
-},
+    const form = new FormData();
+    form.append("photo", file);
+    const res = await fetch(`${API_URL}/api/uploads`, {
+      method: "POST",
+      body: form,
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || "Upload failed.");
+    return data;
+  },
 };
 
 export function formatPrice(cents) {
@@ -43,13 +53,5 @@ export function resolveMediaUrl(pathOrUrl) {
   return `${API_URL}${pathOrUrl}`;
 }
 
-sendContactMessage: async (payload) => {
-  const res = await fetch(`${API_URL}/api/contact`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload),
-  });
-  const data = await res.json();
-  if (!res.ok) throw new Error(data.error || "Couldn't send your message.");
-  return data;
+
 },
