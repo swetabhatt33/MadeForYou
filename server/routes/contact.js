@@ -1,14 +1,11 @@
 import { Router } from "express";
-import { Resend } from "resend";
+import { sendEmail } from "../email.js";
 
-const resend = new Resend(process.env.RESEND_API_KEY || "re_not_configured");
-const FROM_ADDRESS = process.env.EMAIL_FROM || "orders@yourdomain.com";
-const OWNER_EMAIL = process.env.OWNER_EMAIL || FROM_ADDRESS;
-
+const OWNER_EMAIL = process.env.OWNER_EMAIL || process.env.GMAIL_USER;
 const MAX_MESSAGE_LENGTH = 2000;
 
 const RATE_LIMIT = 5;
-const RATE_WINDOW_MS = 60 * 60 * 1000; // per hour
+const RATE_WINDOW_MS = 60 * 60 * 1000;
 const hits = new Map();
 
 function isRateLimited(ip) {
@@ -51,15 +48,8 @@ contactRouter.post("/", async (req, res) => {
     return res.status(400).json({ error: Object.values(errors)[0] });
   }
 
-  if (!process.env.RESEND_API_KEY) {
-    return res.status(500).json({
-      error: "The contact form isn't fully set up yet — please try emailing us directly.",
-    });
-  }
-
   try {
-    const { error } = await resend.emails.send({
-      from: FROM_ADDRESS,
+    const result = await sendEmail({
       to: OWNER_EMAIL,
       replyTo: email,
       subject: `New contact form message from ${name}`,
@@ -71,7 +61,11 @@ contactRouter.post("/", async (req, res) => {
         </div>
       `,
     });
-    if (error) throw new Error(error.message || "Resend API error");
+    if (result.skipped) {
+      return res.status(500).json({
+        error: "The contact form isn't fully set up yet — please try emailing us directly.",
+      });
+    }
     res.json({ ok: true });
   } catch (err) {
     console.error("Contact form email failed:", err.message);
