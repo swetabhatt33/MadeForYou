@@ -546,11 +546,11 @@ textarea:focus-visible {
   aspect-ratio: 3/2;
 }
 .product-visual-greeting-card {
-  aspect-ratio: 4/3;
+  aspect-ratio: auto;
 }
 .product-visual-greeting-card .product-photo {
+  height: auto;
   object-fit: contain;
-  background: var(--vellum-soft);
 }
 .product-visual-invitations {
   aspect-ratio: auto;
