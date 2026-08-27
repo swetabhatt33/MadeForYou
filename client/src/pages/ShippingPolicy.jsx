@@ -8,7 +8,7 @@ export default function ShippingPolicy() {
       <p>
         Every item is personalized and made to order after you check out —
         it isn't sitting pre-made on a shelf. Please allow{" "}
-        <strong>[X–X business days]</strong> for us to prepare your order
+        <strong>2 business days</strong> for us to prepare your order
         before it ships. Orders with multiple personalized items (like
         several return gifts) may take longer, since each one is set up
         individually.
@@ -17,7 +17,7 @@ export default function ShippingPolicy() {
       <h2>Shipping time</h2>
       <p>
         Once your order ships, delivery typically takes{" "}
-        <strong>[X–X business days]</strong>, depending on your location.
+        <strong>5 business days</strong>, depending on your location.
         You'll receive a confirmation once your order is on its way.
       </p>
 
