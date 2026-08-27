@@ -176,6 +176,18 @@ textarea:focus-visible {
   font-weight: 500;
 }
 
+.contact-form {
+  max-width: 480px;
+  margin-top: 30px;
+}
+.contact-success {
+  margin-top: 30px;
+  padding: 20px;
+  background: var(--vellum-soft);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+}
+
 .mobile-menu-toggle {
   display: none;
   flex-direction: column;
@@ -195,7 +207,11 @@ textarea:focus-visible {
   background: var(--ink);
 }
 .mobile-nav-panel {
-  display: none;
+ display: flex;
+  gap: 28px;
+  font-family: var(--font-utility);
+  font-size: 0.9rem;
+  font-weight: 500;
 }
 .nav-links a {
   text-decoration: none;
