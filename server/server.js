@@ -15,7 +15,6 @@ const PORT = process.env.PORT || 4000;
 const CLIENT_URL = process.env.CLIENT_URL || "http://localhost:5173";
 
 app.use(cors({ origin: CLIENT_URL }));
-app.use("/api/contact", contactRouter);
 
 // Stripe webhooks need the RAW body for signature verification, so this
 // route must be registered before express.json() is applied globally.
@@ -23,12 +22,11 @@ app.use("/api/webhook", express.raw({ type: "application/json" }), webhookRouter
 
 app.use(express.json());
 
-// Publicly serve uploaded customer photos.
-
 app.get("/api/health", (req, res) => res.json({ ok: true }));
 app.use("/api/products", productsRouter);
 app.use("/api/checkout", checkoutRouter);
 app.use("/api/uploads", uploadsRouter);
+app.use("/api/contact", contactRouter);
 
 app.use((err, req, res, next) => {
   console.error(err);
