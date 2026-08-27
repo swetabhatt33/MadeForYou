@@ -42,3 +42,14 @@ export function resolveMediaUrl(pathOrUrl) {
   if (/^https?:\/\//i.test(pathOrUrl)) return pathOrUrl;
   return `${API_URL}${pathOrUrl}`;
 }
+
+sendContactMessage: async (payload) => {
+  const res = await fetch(`${API_URL}/api/contact`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  });
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.error || "Couldn't send your message.");
+  return data;
+},
