@@ -17,6 +17,15 @@ export default function Header() {
           <Link to="/product/greeting-card">Greeting Cards</Link>
           <Link to="/product/invitations">Invitations</Link>
           <Link to="/product/return-gifts">Return Gifts</Link>
+          <Link to="/contact">Contact</Link>
+        </nav>
+
+        <nav className="mobile-nav-panel">
+          <Link to="/product/gift-box">Gift Boxes</Link>
+          <Link to="/product/greeting-card">Greeting Cards</Link>
+          <Link to="/product/invitations">Invitations</Link>
+          <Link to="/product/return-gifts">Return Gifts</Link>
+          <Link to="/contact">Contact</Link>
         </nav>
         <Link to="/cart" className="cart-link">
           Cart
