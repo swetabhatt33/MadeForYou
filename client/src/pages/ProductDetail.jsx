@@ -37,9 +37,10 @@ export default function ProductDetail() {
   // If this product maps a personalization field (e.g. a color dropdown)
   // to specific photos, look up which photo matches the current choice.
   const colorImages = product.colorImages;
-  const selectedImage = colorImages
-    ? colorImages.options[personalization[colorImages.fieldName]]
-    : undefined;
+  const colorImages = product.colorImages;
+  const selectedImage =
+  (colorImages ? colorImages.options[personalization[colorImages.fieldName]] : undefined) ||
+  (product.variantImages ? product.variantImages[variantId] : undefined);
 
   const setField = (name, value) => {
     setPersonalization((prev) => ({ ...prev, [name]: value }));
