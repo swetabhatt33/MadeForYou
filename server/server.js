@@ -5,7 +5,7 @@ export async function sendEmail({ to, replyTo, subject, html }) {
   if (!BREVO_API_KEY || !FROM_ADDRESS) {
     console.warn("⚠️  BREVO_API_KEY/EMAIL_FROM not set — email not sent.");
     return { skipped: true };
-  }
+  } 
 
   const payload = {
     sender: { email: FROM_ADDRESS, name: "Made For You" },
