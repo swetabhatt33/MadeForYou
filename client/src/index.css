@@ -206,12 +206,9 @@ textarea:focus-visible {
   height: 2px;
   background: var(--ink);
 }
+
 .mobile-nav-panel {
- display: flex;
-  gap: 28px;
-  font-family: var(--font-utility);
-  font-size: 0.9rem;
-  font-weight: 500;
+  display: none;
 }
 .nav-links a {
   text-decoration: none;
