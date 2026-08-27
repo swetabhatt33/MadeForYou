@@ -8,8 +8,11 @@ function getTransporter() {
   if (!GMAIL_USER || !GMAIL_APP_PASSWORD) return null;
   if (!transporter) {
     transporter = nodemailer.createTransport({
-      service: "gmail",
+      host: "smtp.gmail.com",
+      port: 587,
+      secure: false, // STARTTLS on 587, instead of implicit TLS on 465
       auth: { user: GMAIL_USER, pass: GMAIL_APP_PASSWORD },
+      connectionTimeout: 10000,
     });
   }
   return transporter;
