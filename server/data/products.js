@@ -8,7 +8,7 @@ export const PRODUCTS = [
     name: "Personalized Gift Boxes",
     tagline: "Because Every Story Deserves a Special Gift.",
     description:
-      "We transform your emotions into beautifully curated gift experiences. Each personalized box is thoughtfully designed to capture memories, celebrate milestones, and make every occasion unforgettable. Each box comes with:",
+      "Each personalized box is thoughtfully designed to capture memories, celebrate milestones, and make every occasion unforgettable. Each box comes with:",
     includes: [
       "A handmade card",
       "Chocolates",
@@ -78,7 +78,7 @@ export const PRODUCTS = [
     name: "Personalized Greeting Cards",
     tagline: "Your words transform into beautiful poetry—whether it be a story or express the deepest emotions.",
     description:
-      "A personalized greeting card that brings your story to life through heartfelt pictures and beautifully crafted poetry—capturing memories and emotions you’ll cherish forever.** Your story, your memories, your vision—transformed into a custom-designed picture on a greeting card made just for you.**",
+      "** Your story(message)-transformed in to a poem, your memories and vision—transformed into a custom-designed picture on a greeting card made just for you.**",
     theme: "burgundy",
     images: [
       "/images/greeting-card-1.jpg",
