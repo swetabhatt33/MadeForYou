@@ -904,6 +904,52 @@ textarea {
   color: var(--charcoal);
   opacity: 0.65;
 }
+.legal-page {
+  max-width: 720px;
+}
+.legal-page h1 {
+  margin-bottom: 6px;
+}
+.legal-updated {
+  font-family: var(--font-utility);
+  font-size: 0.8rem;
+  color: var(--charcoal);
+  opacity: 0.6;
+  margin-bottom: 30px;
+}
+.legal-page h2 {
+  font-size: 1.3rem;
+  margin-top: 34px;
+  margin-bottom: 12px;
+}
+.legal-page p,
+.legal-page li {
+  color: var(--charcoal);
+  line-height: 1.7;
+}
+.legal-page ul {
+  padding-left: 20px;
+  margin: 10px 0;
+}
+.legal-page a {
+  color: var(--brass);
+  text-decoration: underline;
+}
+.footer-links {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  font-family: var(--font-utility);
+  font-size: 0.82rem;
+}
+.footer-links a {
+  text-decoration: none;
+  color: var(--charcoal);
+  opacity: 0.65;
+}
+.footer-links a:hover {
+  opacity: 1;
+}
 @media (max-width: 860px) {
   .hero-grid,
   .product-detail {
