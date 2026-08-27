@@ -16,8 +16,6 @@ const CLIENT_URL = process.env.CLIENT_URL || "http://localhost:5173";
 
 app.use(cors({ origin: CLIENT_URL }));
 
-// Stripe webhooks need the RAW body for signature verification, so this
-// route must be registered before express.json() is applied globally.
 app.use("/api/webhook", express.raw({ type: "application/json" }), webhookRouter);
 
 app.use(express.json());
@@ -25,4 +23,14 @@ app.use(express.json());
 app.get("/api/health", (req, res) => res.json({ ok: true }));
 app.use("/api/products", productsRouter);
 app.use("/api/checkout", checkoutRouter);
-app.use("/api/uploads",
+app.use("/api/uploads", uploadsRouter);
+app.use("/api/contact", contactRouter);
+
+app.use((err, req, res, next) => {
+  console.error(err);
+  res.status(500).json({ error: "Something went wrong." });
+});
+
+app.listen(PORT, () => {
+  console.log(`Vellum & Seal API listening on http://localhost:${PORT}`);
+});
