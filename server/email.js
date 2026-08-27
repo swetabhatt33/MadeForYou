@@ -1,36 +1,38 @@
-import nodemailer from "nodemailer";
-
-const GMAIL_USER = process.env.GMAIL_USER;
-const GMAIL_APP_PASSWORD = process.env.GMAIL_APP_PASSWORD;
-
-let transporter = null;
-function getTransporter() {
-  if (!GMAIL_USER || !GMAIL_APP_PASSWORD) return null;
-  if (!transporter) {
-    transporter = nodemailer.createTransport({
-      host: "smtp.gmail.com",
-      port: 587,
-      secure: false, // STARTTLS on 587, instead of implicit TLS on 465
-      auth: { user: GMAIL_USER, pass: GMAIL_APP_PASSWORD },
-      connectionTimeout: 10000,
-    });
-  }
-  return transporter;
-}
+const BREVO_API_KEY = process.env.BREVO_API_KEY;
+const FROM_ADDRESS = process.env.EMAIL_FROM;
 
 export async function sendEmail({ to, replyTo, subject, html }) {
-  const t = getTransporter();
-  if (!t) {
-    console.warn("⚠️  GMAIL_USER/GMAIL_APP_PASSWORD not set — email not sent.");
+  if (!BREVO_API_KEY || !FROM_ADDRESS) {
+    console.warn("⚠️  BREVO_API_KEY/EMAIL_FROM not set — email not sent.");
     return { skipped: true };
   }
-  return t.sendMail({
-    from: `"Made For You" <${GMAIL_USER}>`,
-    to,
-    replyTo,
+
+  const payload = {
+    sender: { email: FROM_ADDRESS, name: "Made For You" },
+    to: [{ email: to }],
     subject,
-    html,
+    htmlContent: html,
+  };
+  if (replyTo) {
+    payload.replyTo = { email: replyTo };
+  }
+
+  const res = await fetch("https://api.brevo.com/v3/smtp/email", {
+    method: "POST",
+    headers: {
+      "api-key": BREVO_API_KEY,
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify(payload),
   });
+
+  if (!res.ok) {
+    const errBody = await res.json().catch(() => ({}));
+    throw new Error(errBody.message || `Brevo API error (status ${res.status})`);
+  }
+
+  return { skipped: false };
 }
 
 export async function sendOrderConfirmationEmail(order) {
