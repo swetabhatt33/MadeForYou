@@ -552,11 +552,14 @@ textarea:focus-visible {
   object-fit: contain;
   background: var(--vellum-soft);
 }
-.product-visual-invitations-1 {
-  aspect-ratio: 3/4;
+.product-visual-invitations {
+  aspect-ratio: auto;
+  max-width: 420px;
+  margin-left: auto;
 }
-.product-visual-invitations-2 {
-  aspect-ratio: 4/3;
+.product-visual-invitations .product-photo {
+  height: auto;
+  object-fit: contain;
 }
 .product-visual-return-gifts {
   aspect-ratio: 4/3;
