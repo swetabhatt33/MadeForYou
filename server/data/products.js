@@ -124,15 +124,21 @@ export const PRODUCTS = [
     description:
       "Invitations specially designed your occasion, set by hand for weddings, milestones, and celebrations of every kind.",
     theme: "green",
-    images: [
-      "/images/invitations-1.jpg",
-      "/images/invitations-2.jpg",
-    ],
-    variants: [
-  { id: "letterpress", label: "LetterPress Invitation — pack of 10 cards", price: 1200 },
-  { id: "basket", label: "Invitation Basket — 1 unit", price: 1500 },
-  { id: "box", label: "Invitation Box — 1 unit", price: 1500 },
-],
+	images: [
+	  "/images/invitations-1.jpg",
+	  "/images/invitations-2.jpg",
+	  "/images/invitations-3.jpg",
+	],
+	variantImages: {
+	  letterpress: "/images/invitations-3.jpg",
+	  basket: "/images/invitations-1.jpg",
+	  box: "/images/invitations-2.jpg",
+	},
+	variants: [
+	  { id: "letterpress", label: "LetterPress Invitation — pack of 10 cards", price: 1200 },
+	  { id: "basket", label: "Invitation Basket — 1 unit", price: 1500 },
+	  { id: "box", label: "Invitation Box — 1 unit", price: 1500 },
+	],
 variantFieldLabel: "Invitation Type",
     personalizationFields: [
       {
