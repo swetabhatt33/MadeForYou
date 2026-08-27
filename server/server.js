@@ -7,6 +7,7 @@ import { productsRouter } from "./routes/products.js";
 import { checkoutRouter } from "./routes/checkout.js";
 import { webhookRouter } from "./routes/webhook.js";
 import { uploadsRouter } from "./routes/uploads.js";
+import { contactRouter } from "./routes/contact.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
@@ -14,6 +15,7 @@ const PORT = process.env.PORT || 4000;
 const CLIENT_URL = process.env.CLIENT_URL || "http://localhost:5173";
 
 app.use(cors({ origin: CLIENT_URL }));
+app.use("/api/contact", contactRouter);
 
 // Stripe webhooks need the RAW body for signature verification, so this
 // route must be registered before express.json() is applied globally.
