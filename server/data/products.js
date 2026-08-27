@@ -78,7 +78,7 @@ export const PRODUCTS = [
     name: "Personalized Greeting Cards",
     tagline: "Your words transform into beautiful poetry—whether it be a story or express the deepest emotions.",
     description:
-      "** Your story(message)-transformed in to a poem, your memories and vision—transformed into a custom-designed picture on a greeting card made just for you.**",
+      "Your story(message)-transformed in to a poem, your memories and vision—transformed into a custom-designed picture on a greeting card made just for you.",
     theme: "burgundy",
     images: [
       "/images/greeting-card-1.jpg",
