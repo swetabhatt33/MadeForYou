@@ -556,7 +556,7 @@ textarea:focus-visible {
   aspect-ratio: 4/3;
 }
 .product-visual-invitations .product-photo {
-  object-fit: contain;
+  object-fit: fill;
   background: var(--vellum-soft);
 }
 
