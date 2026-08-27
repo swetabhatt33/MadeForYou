@@ -36,9 +36,8 @@ export default function ShippingPolicy() {
 
       <h2>Tracking</h2>
       <p>
-        [If you provide tracking numbers, describe how customers receive
-        them here — e.g. "You'll receive a tracking number by email once
-        your order ships."]
+        You'll receive a tracking number by email once
+        your order ships.
       </p>
 
       <h2>Questions about your order</h2>
