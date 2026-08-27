@@ -53,5 +53,3 @@ export function resolveMediaUrl(pathOrUrl) {
   return `${API_URL}${pathOrUrl}`;
 }
 
-
-},
