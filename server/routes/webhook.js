@@ -1,6 +1,7 @@
 import { Router } from "express";
 import Stripe from "stripe";
 import { findOrderByStripeSessionId, updateOrder } from "../db.js";
+import { sendOrderConfirmationEmail } from "../email.js";
 
 export const webhookRouter = Router();
 
@@ -8,9 +9,6 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "", {
   apiVersion: "2024-06-20",
 });
 
-// NOTE: this route is mounted with express.raw() in server.js, not
-// express.json(), because Stripe's signature check needs the exact
-// raw request body bytes.
 webhookRouter.post("/", async (req, res) => {
   const sig = req.headers["stripe-signature"];
   let event;
@@ -31,12 +29,12 @@ webhookRouter.post("/", async (req, res) => {
       const session = event.data.object;
       const order = await findOrderByStripeSessionId(session.id);
       if (order) {
-        await updateOrder(order.id, {
+        const updatedOrder = await updateOrder(order.id, {
           status: "paid",
           paidAt: new Date().toISOString(),
         });
-        // TODO: send a confirmation email, notify fulfillment, etc.
         console.log(`Order ${order.id} marked as paid.`);
+        await sendOrderConfirmationEmail(updatedOrder);
       }
       break;
     }
@@ -49,7 +47,6 @@ webhookRouter.post("/", async (req, res) => {
       break;
     }
     default:
-      // Unhandled event type — safe to ignore.
       break;
   }
 
