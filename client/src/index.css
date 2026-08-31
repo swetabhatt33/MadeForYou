@@ -1024,4 +1024,13 @@ textarea {
     color: var(--ink);
     font-weight: 700;
   }
+  .site-footer .row {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+.footer-links {
+  flex-direction: column;
+  gap: 10px;
+}
 }
