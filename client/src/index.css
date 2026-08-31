@@ -1024,13 +1024,13 @@ textarea {
     color: var(--ink);
     font-weight: 700;
   }
-  .site-footer .row {
-  flex-direction: column;
+ .site-footer .row {
+  flex-wrap: wrap;
+  gap: 10px 20px;
   align-items: flex-start;
-  gap: 16px;
 }
 .footer-links {
-  flex-direction: column;
-  gap: 10px;
+  flex-wrap: wrap;
+  gap: 10px 18px;
 }
 }
