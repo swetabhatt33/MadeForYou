@@ -567,7 +567,6 @@ textarea:focus-visible {
 }
 .product-visual-invitations {
   aspect-ratio: auto;
-  max-width: 420px;
 }
 .product-visual-invitations .product-photo {
   height: auto;
