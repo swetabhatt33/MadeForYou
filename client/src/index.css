@@ -574,6 +574,7 @@ textarea:focus-visible {
 }
 .product-visual-return-gifts {
   aspect-ratio: 4/3;
+  max-height: 300 px;
 }
 
 .product-visual svg {
