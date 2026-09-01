@@ -567,11 +567,11 @@ textarea:focus-visible {
 }
 .product-visual-invitations {
   aspect-ratio: auto;
-  max-height: 300 px;
 }
 .product-visual-invitations .product-photo {
-  height: auto;
   object-fit: contain;
+  max-height: 300 px;
+
 }
 .product-visual-return-gifts {
   aspect-ratio: 4/3;
