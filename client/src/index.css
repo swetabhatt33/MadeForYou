@@ -587,13 +587,15 @@ textarea:focus-visible {
   object-fit: contain;
 }
 .product-visual-invitations {
-  aspect-ratio: 3/2;
+  aspect-ratio: auto;
   max-width: 480px;
 }
 .product-visual-invitations .product-photo {
-  height: 100%;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 480px;
   object-fit: contain;
-  background: var(--vellum-soft);
 }
 .product-visual-return-gifts {
   aspect-ratio: 4/3;
