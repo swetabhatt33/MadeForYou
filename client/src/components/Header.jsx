@@ -47,4 +47,44 @@ export default function Header() {
           </button>
           <button
             type="button"
-            className={currency
+            className={currency === "cad" ? "active" : ""}
+            onClick={() => setCurrency("cad")}
+          >
+            CAD
+          </button>
+        </div>
+
+        <Link to="/cart" className="cart-link">
+          Cart
+          <span className="cart-count">{count}</span>
+        </Link>
+      </div>
+
+      {menuOpen && (
+        <nav className="mobile-nav-panel">
+          <Link to="/product/gift-box" onClick={closeMenu}>Gift Boxes</Link>
+          <Link to="/product/greeting-card" onClick={closeMenu}>Greeting Cards</Link>
+          <Link to="/product/invitations" onClick={closeMenu}>Invitations</Link>
+          <Link to="/product/return-gifts" onClick={closeMenu}>Return Gifts</Link>
+          <Link to="/contact" onClick={closeMenu}>Contact</Link>
+          <div className="currency-toggle" style={{ marginTop: 12 }}>
+            <button
+              type="button"
+              className={currency === "usd" ? "active" : ""}
+              onClick={() => { setCurrency("usd"); closeMenu(); }}
+            >
+              USD
+            </button>
+            <button
+              type="button"
+              className={currency === "cad" ? "active" : ""}
+              onClick={() => { setCurrency("cad"); closeMenu(); }}
+            >
+              CAD
+            </button>
+          </div>
+        </nav>
+      )}
+    </header>
+  );
+}
