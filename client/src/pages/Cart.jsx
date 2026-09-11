@@ -6,7 +6,7 @@ import ProductImage from "../components/ProductImage";
 
 
 export default function Cart() {
-  const { items, removeItem, updateQuantity, subtotal } = useCart();
+  const { items, removeItem, updateQuantity, subtotal, currency } = useCart();
   const [searchParams] = useSearchParams();
   const [email, setEmail] = useState("");
   const [submitting, setSubmitting] = useState(false);
@@ -22,6 +22,7 @@ export default function Cart() {
     try {
       const payload = {
         customerEmail: email,
+        currency,
         items: items.map((i) => ({
           productId: i.productId,
           variantId: i.variantId,
@@ -41,135 +42,4 @@ export default function Cart() {
     return (
       <div className="container empty-state">
         <h1>Your cart is empty</h1>
-        <p>Personalize a gift box, gift card, or invitation to get started.</p>
-        <Link to="/#collection" className="btn btn-primary">
-        Browse the collection
-        </Link>
-      </div>
-    );
-  }
-
-  return (
-    <div className="container cart-page">
-      <Link to="/#collection" className="crumb back-button">
-        ← Back to the collection
-      </Link>
-      <h1>Your cart</h1>
-
-      {canceled && (
-        <p className="error-text" style={{ marginTop: 10 }}>
-          Checkout was canceled — your cart has been saved.
-        </p>
-      )}
-
-      <div style={{ marginTop: 30 }}>
-        {items.map((item) => (
-          <div className="cart-item" key={item.cartId}>
-            <div className="cart-thumb">
-              <ProductImage
-                id={item.productId}
-                name={item.productName}
-                theme={item.theme}
-                images={item.images}
-                className="cart-photo"
-                iconClassName="cart-icon"
-              />
-            </div>
-            <div>
-              <h4>{item.productName}</h4>
-                            <p className="meta">{item.variantLabel}</p>
-              <div className="qty-stepper">
-                <button
-                  type="button"
-                  className="qty-btn"
-                  onClick={() => updateQuantity(item.cartId, item.quantity - 1)}
-                  disabled={item.quantity <= 1}
-                  aria-label="Decrease quantity"
-                >
-                  −
-                </button>
-                <span className="qty-value">{item.quantity}</span>
-                <button
-                  type="button"
-                  className="qty-btn"
-                  onClick={() => updateQuantity(item.cartId, item.quantity + 1)}
-                  disabled={item.quantity >= 10}
-                  aria-label="Increase quantity"
-                >
-                  +
-                </button>
-              </div>
-                <p className="personalization-summary">
-                {Object.entries(item.personalization)
-                  .filter(([, v]) => v && !isImageValue(v) && !(Array.isArray(v) && v.length === 0))
-                  .map(([k, v]) => `${prettyLabel(k)}: ${v}`)
-                  .join(" · ")}
-              </p>
-              <div className="personalization-images">
-                {Object.entries(item.personalization)
-                  .filter(([, v]) => isImageValue(v))
-                  .flatMap(([k, v]) =>
-                    (Array.isArray(v) ? v : [v]).map((url, i) => (
-                      <img
-                        key={`${k}-${i}`}
-                        src={resolveMediaUrl(url)}
-                        alt="Custom artwork"
-                        className="personalization-image"
-                      />
-                    ))
-                  )}
-              </div>
-              <button className="remove-btn" onClick={() => removeItem(item.cartId)}>
-                Remove
-              </button>
-            </div>
-            <div className="line-price">
-              {formatPrice(item.unitPrice * item.quantity)}
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <div className="cart-summary">
-        <div className="cart-summary-row total">
-          <span>Subtotal</span>
-          <span>{formatPrice(subtotal)}</span>
-        </div>
-        <p className="field-hint">
-          Shipping and any applicable tax are calculated at checkout.
-        </p>
-      </div>
-
-      <form className="checkout-panel" onSubmit={handleCheckout}>
-        <div className="field-group" style={{ marginBottom: 16 }}>
-          <label htmlFor="email">Email for order confirmation</label>
-          <input
-            id="email"
-            type="email"
-            required
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="you@example.com"
-          />
-        </div>
-        {error && <p className="error-text">{error}</p>}
-        <button className="btn btn-primary" type="submit" disabled={submitting}>
-          {submitting ? "Redirecting to secure checkout…" : "Proceed to checkout"}
-        </button>
-      </form>
-    </div>
-  );
-}
-
-function prettyLabel(key) {
-  return key
-    .replace(/([A-Z])/g, " $1")
-    .replace(/^./, (c) => c.toUpperCase())
-    .trim();
-}
-
-function isImageValue(v) {
-  const isUrl = (s) =>
-    typeof s === "string" && (s.startsWith("/uploads/") || s.includes("res.cloudinary.com"));
-  return Array.isArray(v) ? v.length > 0 && v.every(isUrl) : isUrl(v);
-}
+        <p>Personalize a gift
