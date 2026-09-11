@@ -3,7 +3,10 @@ import { findVariant } from "./data/products.js";
 // Recomputes every line item's price from the server-side catalogue.
 // Never trust a price sent by the client. Throws a descriptive error
 // if the cart references something invalid so the route can return 400.
-export function priceCart(items) {
+export function priceCart(items, currency) {
+  if (currency !== "usd" && currency !== "cad") {
+    throw new Error("Unsupported currency.");
+  }
   if (!Array.isArray(items) || items.length === 0) {
     throw new Error("Cart is empty.");
   }
@@ -23,7 +26,6 @@ export function priceCart(items) {
     }
     const { product, variant } = found;
 
-    // Validate required personalization fields are present.
     for (const field of product.personalizationFields) {
       if (field.required) {
         const val = personalization?.[field.name];
@@ -35,7 +37,12 @@ export function priceCart(items) {
       }
     }
 
-    const lineTotal = variant.price * qty;
+    const unitPrice = currency === "cad" ? variant.priceCAD : variant.price;
+    if (unitPrice == null) {
+      throw new Error(`Item ${i + 1}: this product doesn't have a ${currency.toUpperCase()} price set.`);
+    }
+
+    const lineTotal = unitPrice * qty;
     subtotal += lineTotal;
 
     return {
@@ -43,12 +50,12 @@ export function priceCart(items) {
       variantId,
       productName: product.name,
       variantLabel: variant.label,
-      unitPrice: variant.price,
+      unitPrice,
       quantity: qty,
       lineTotal,
       personalization: personalization || {},
     };
   });
 
-  return { items: pricedItems, subtotal, currency: "usd" };
+  return { items: pricedItems, subtotal, currency };
 }
