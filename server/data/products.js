@@ -34,7 +34,7 @@ export const PRODUCTS = [
       "Rose Pink/Gold": "/images/gift-box-3.jpg",
   },
 },
-    variants: [{ id: "standard", label: "Gift Box", price: 5500 }],
+    variants: [{ id: "standard", label: "Gift Box", price: 5500, priceCAD: 7300 }],
     personalizationFields: [
       {
         name: "recipientName",
@@ -85,7 +85,7 @@ export const PRODUCTS = [
       "/images/greeting-card-2.jpg",
 	  "/images/greeting-card-3.jpg",
     ],
-    variants: [{ id: "standard", label: "Greeting Card", price: 1500 }],
+    variants: [{ id: "standard", label: "Greeting Card", price: 1500, priceCAD: 2000 }],
     personalizationFields: [
       {
         name: "recipientName",
@@ -135,9 +135,9 @@ export const PRODUCTS = [
 	  box: "/images/invitations-2.jpg",
 	},
 	variants: [
-	  { id: "letterpress", label: "LetterPress Invitation — pack of 10 cards", price: 1200 },
-	  { id: "basket", label: "Invitation Basket — 1 unit", price: 1500 },
-	  { id: "box", label: "Invitation Box — 1 unit", price: 1500 },
+	  { id: "letterpress", label: "LetterPress Invitation — pack of 10 cards", price: 1200, priceCAD: 1600 },
+	  { id: "basket", label: "Invitation Basket — 1 unit", price: 1500, priceCAD: 2000 },
+	  { id: "box", label: "Invitation Box — 1 unit", price: 1500, priceCAD: 2000 },
 	],
 variantFieldLabel: "Invitation Type",
     personalizationFields: [
@@ -209,7 +209,7 @@ variantFieldLabel: "Invitation Type",
       "/images/return-gifts-2.jpg",
     ],
 variants: [
-  { id: "return-gift", label: "Pack of 7", price: 5200 }
+  { id: "return-gift", label: "Pack of 7", price: 5200, priceCAD: 6900 }
 ],
     personalizationFields: [
       {
