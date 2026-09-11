@@ -34,7 +34,7 @@ export const PRODUCTS = [
       "Rose Pink/Gold": "/images/gift-box-3.jpg",
   },
 },
-    variants: [{ id: "standard", label: "Gift Box", price: 5200 }],
+    variants: [{ id: "standard", label: "Gift Box", price: 5500 }],
     personalizationFields: [
       {
         name: "recipientName",
