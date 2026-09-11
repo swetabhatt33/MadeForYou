@@ -240,6 +240,27 @@ textarea:focus-visible {
   font-size: 0.75rem;
 }
 
+.currency-toggle {
+  display: flex;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.currency-toggle button {
+  background: #fff;
+  border: none;
+  padding: 6px 10px;
+  font-family: var(--font-utility);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--charcoal);
+  cursor: pointer;
+}
+.currency-toggle button.active {
+  background: var(--ink);
+  color: var(--vellum-soft);
+}
+
 /* ---------- Hero ---------- */
 .hero {
   position: relative;
@@ -571,8 +592,7 @@ textarea:focus-visible {
 .product-visual-invitations .product-photo {
   height: auto;
   object-fit: contain;
-  max-width: 300 px;
-
+  max-width: 300px;
 }
 .product-visual-return-gifts {
   aspect-ratio: 4/3;
