@@ -23,7 +23,7 @@ export default function ShippingPolicy() {
 
       <h2>Where we ship</h2>
       <p>
-        We currently ship to <strong>[list the regions/countries you serve]</strong>.
+        We currently ship to <strong>Canada and U.S only</strong>.
         If you're unsure whether we deliver to your area, email us before
         ordering and we'll confirm.
       </p>
