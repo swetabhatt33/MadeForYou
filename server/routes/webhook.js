@@ -1,7 +1,7 @@
 import { Router } from "express";
 import Stripe from "stripe";
 import { findOrderByStripeSessionId, updateOrder } from "../db.js";
-import { sendOrderConfirmationEmail } from "../email.js";
+import { sendOrderConfirmationEmail, sendOwnerNotificationEmail } from "../email.js";
 
 export const webhookRouter = Router();
 
@@ -35,6 +35,7 @@ webhookRouter.post("/", async (req, res) => {
         });
         console.log(`Order ${order.id} marked as paid.`);
         await sendOrderConfirmationEmail(updatedOrder);
+        await sendOwnerNotificationEmail(updatedOrder);
       }
       break;
     }
