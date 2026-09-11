@@ -109,3 +109,72 @@ function escapeHtml(str) {
     (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])
   );
 }
+
+export async function sendOwnerNotificationEmail(order) {
+  const ownerEmail = process.env.OWNER_EMAIL;
+  if (!ownerEmail) {
+    console.warn("⚠️  OWNER_EMAIL not set — skipping owner notification.");
+    return;
+  }
+  try {
+    await sendEmail({
+      to: ownerEmail,
+      subject: `New order — ${order.id} (${(order.subtotal / 100).toFixed(2)} ${order.currency.toUpperCase()})`,
+      html: buildOwnerNotificationHtml(order),
+    });
+  } catch (err) {
+    console.error(`Failed to send owner notification for order ${order.id}:`, err.message);
+  }
+}
+
+function buildOwnerNotificationHtml(order) {
+  const itemsHtml = order.items
+    .map((item) => {
+      const details = Object.entries(item.personalization || {})
+        .filter(([, v]) => v && !isImageValue(v))
+        .map(([k, v]) => `<li>${prettyLabel(k)}: ${escapeHtml(String(v))}</li>`)
+        .join("");
+      const photoLinks = Object.entries(item.personalization || {})
+        .filter(([, v]) => isImageValue(v))
+        .flatMap(([, v]) => (Array.isArray(v) ? v : [v]))
+        .map((url) => `<a href="${url}">${escapeHtml(url)}</a>`)
+        .join("<br/>");
+
+      return `
+        <tr>
+          <td style="padding:14px 0;border-bottom:1px solid #eee;">
+            <strong>${escapeHtml(item.productName)}</strong> — ${escapeHtml(item.variantLabel)} &times; ${item.quantity}
+            ${details ? `<ul style="margin:8px 0 0;padding-left:18px;font-size:13px;color:#555;">${details}</ul>` : ""}
+            ${photoLinks ? `<p style="font-size:13px;"><strong>Uploaded photo(s):</strong><br/>${photoLinks}</p>` : ""}
+          </td>
+          <td style="padding:14px 0;border-bottom:1px solid #eee;text-align:right;vertical-align:top;white-space:nowrap;">
+            $${(item.lineTotal / 100).toFixed(2)}
+          </td>
+        </tr>
+      `;
+    })
+    .join("");
+
+  return `
+    <div style="font-family:Georgia,serif;max-width:560px;margin:0 auto;color:#2b2b26;">
+      <h1 style="font-size:22px;margin-bottom:4px;">New order received</h1>
+      <p style="font-size:13px;color:#888;">Order reference: ${escapeHtml(order.id)}</p>
+      <p><strong>Customer:</strong> ${escapeHtml(order.customerEmail)}</p>
+      <table style="width:100%;border-collapse:collapse;margin-top:20px;">
+        ${itemsHtml}
+      </table>
+      <table style="width:100%;margin-top:16px;">
+        <tr>
+          <td><strong>Total</strong></td>
+          <td style="text-align:right;"><strong>${(order.subtotal / 100).toFixed(2)} ${order.currency.toUpperCase()}</strong></td>
+        </tr>
+      </table>
+    </div>
+  `;
+}
+
+function isImageValue(v) {
+  const isUrl = (s) =>
+    typeof s === "string" && (s.startsWith("/uploads/") || s.includes("res.cloudinary.com"));
+  return Array.isArray(v) ? v.length > 0 && v.every(isUrl) : isUrl(v);
+}
