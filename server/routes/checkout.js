@@ -14,13 +14,13 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "", {
 // the client back the URL to redirect the browser to.
 checkoutRouter.post("/", async (req, res) => {
   try {
-    const { items, customerEmail } = req.body;
+    const { items, customerEmail,currency} = req.body;
 
     if (!customerEmail || !/^\S+@\S+\.\S+$/.test(customerEmail)) {
       return res.status(400).json({ error: "A valid email is required." });
     }
 
-    const priced = priceCart(items);
+    const priced = priceCart(items, currency);
 
     const orderId = nanoid(12);
     const order = {
