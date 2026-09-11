@@ -592,7 +592,8 @@ textarea:focus-visible {
 }
 .product-visual-invitations .product-photo {
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  background: var(--vellum-soft);
 }
 .product-visual-return-gifts {
   aspect-ratio: 4/3;
