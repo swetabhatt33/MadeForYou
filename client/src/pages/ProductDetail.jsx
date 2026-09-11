@@ -207,12 +207,21 @@ function PersonalizationInput({ field, value, onChange }) {
   }
 
   return (
-    <input
-      id={field.name}
-      type={field.type === "date" ? "date" : "text"}
-      value={value}
-      maxLength={field.maxLength}
-      onChange={(e) => onChange(e.target.value)}
-    />
-  );
+  <input
+    id={field.name}
+    type={field.type === "date" ? "date" : "text"}
+    value={value}
+    maxLength={field.maxLength}
+    onChange={(e) => onChange(e.target.value)}
+    onClick={(e) => {
+      if (field.type === "date" && typeof e.target.showPicker === "function") {
+        try {
+          e.target.showPicker();
+        } catch {
+          // Some browsers/contexts restrict this — fail silently, default click behavior still works.
+        }
+      }
+    }}
+  />
+);
 }
