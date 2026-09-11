@@ -9,7 +9,7 @@ import ImageUploadField from "../components/ImageUploadField";
 export default function ProductDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { addItem } = useCart();
+  const { addItem, currency } = useCart();
 
   const [product, setProduct] = useState(null);
   const [variantId, setVariantId] = useState(null);
@@ -34,6 +34,7 @@ export default function ProductDetail() {
   if (!product) return <div className="container section">Product not found.</div>;
 
   const variant = product.variants.find((v) => v.id === variantId);
+  const unitPrice = variant ? (currency === "cad" ? variant.priceCAD : variant.price) : 0;
   // If this product maps a personalization field (e.g. a color dropdown)
   // to specific photos, look up which photo matches the current choice.
   const colorImages = product.colorImages;
@@ -73,7 +74,8 @@ export default function ProductDetail() {
       images: product.images,
       variantId: variant.id,
       variantLabel: variant.label,
-      unitPrice: variant.price,
+      unitPrice,
+      currency,
       quantity,
       personalization,
     });
@@ -116,7 +118,7 @@ export default function ProductDetail() {
                 aria-pressed={v.id === variantId}
                 onClick={() => setVariantId(v.id)}
               >
-                {v.label} — {formatPrice(v.price)}
+                {v.label} — {formatPrice(currency === "cad" ? v.priceCAD : v.price, currency)}
               </button>
             ))}
           </div>
@@ -156,7 +158,7 @@ export default function ProductDetail() {
 
         <div className="sticky-cta">
           <span className="price">
-            {variant ? formatPrice(variant.price * quantity) : ""}
+            {variant ? formatPrice(unitPrice * quantity, currency) : ""}
           </span>
           <button className="btn btn-primary" onClick={handleAddToCart}>
             {justAdded ? "Added ✓" : "Add to cart"}
