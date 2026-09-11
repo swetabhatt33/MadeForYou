@@ -77,10 +77,22 @@ checkoutRouter.get("/order/:id", async (req, res) => {
   res.json({ order });
 });
 
+function isImageValue(v) {
+  const isUrl = (s) =>
+    typeof s === "string" && (s.startsWith("/uploads/") || s.includes("res.cloudinary.com"));
+  return Array.isArray(v) ? v.length > 0 && v.every(isUrl) : isUrl(v);
+}
+
 function summarizePersonalization(personalization) {
   const parts = Object.entries(personalization || {})
-    .filter(([, v]) => v)
-    .map(([k, v]) => `${k}: ${v}`);
+    .filter(([, v]) => v && !(Array.isArray(v) && v.length === 0))
+    .map(([k, v]) => {
+      if (isImageValue(v)) {
+        const count = Array.isArray(v) ? v.length : 1;
+        return `${k}: ${count} photo${count > 1 ? "s" : ""} included`;
+      }
+      return `${k}: ${v}`;
+    });
   // Stripe truncates long product descriptions; keep this compact.
   return parts.join(" · ").slice(0, 300);
 }
