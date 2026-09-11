@@ -587,8 +587,8 @@ textarea:focus-visible {
   object-fit: contain;
 }
 .product-visual-invitations {
-  aspect-ratio: 4/5;
-  max-width: 420px;
+  aspect-ratio: 3/2;
+  max-width: 480px;
 }
 .product-visual-invitations .product-photo {
   height: 100%;
