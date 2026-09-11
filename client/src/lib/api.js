@@ -41,10 +41,10 @@ export const api = {
   },
 };
 
-export function formatPrice(cents) {
+export function formatPrice(cents, currency = "usd") {
   return (cents / 100).toLocaleString("en-US", {
     style: "currency",
-    currency: "USD",
+    currency: currency.toUpperCase(),
   });
 }
 export function resolveMediaUrl(pathOrUrl) {
